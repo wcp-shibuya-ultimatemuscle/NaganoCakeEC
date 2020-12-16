@@ -61,4 +61,13 @@ ActiveRecord::Schema.define(version: 2020_12_16_025957) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "receivers", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "postal_code"
+    t.string "address"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
