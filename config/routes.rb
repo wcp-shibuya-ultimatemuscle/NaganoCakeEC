@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   #admins/productのルーティング
   namespace :admin do
-   resources :product, only: [:index, :new, :create, :show, :edit, :update]
+   resources :products, only: [:index, :new, :create, :show, :edit, :update]
   end
 
 end
