@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 2020_12_16_025957) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.boolean "is_active"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "order_id"
@@ -39,6 +46,17 @@ ActiveRecord::Schema.define(version: 2020_12_16_025957) do
     t.integer "payment"
     t.integer "sum"
     t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "name"
+    t.text "body"
+    t.integer "tax_out_price"
+    t.text "image_id"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
