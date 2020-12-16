@@ -12,12 +12,6 @@ Rails.application.routes.draw do
   registrations: 'admin/registrations'
   }
   
-  devise_for :customers
-  devise_for :admins
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
   patch 'admin/order_creates/:id' => 'admin/order_creates#update'
 
   get 'orders/thanks' => 'customer/orders#thanks'
