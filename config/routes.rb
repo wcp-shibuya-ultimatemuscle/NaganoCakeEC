@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  
   devise_for :customers
   devise_for :admins
+
+  root to: 'customer/homes#top'
+  get '/about', to: 'customer/homes#about'
 
   namespace :admin do                                                  #admin/customersコントローラのルーティングです　5-7行
     resources :customers, only:[:index, :edit, :update, :show]
@@ -16,5 +20,6 @@ Rails.application.routes.draw do
 
   get "/customers/unsubscribe" => "customer/customers#unsubscribe"    #getメソッドでunsubscribeアクションにつながります
   patch "/customers" => "customer/customers#withdraw"                 #patchメソッドでwithdrawアクションにつながります
+
 
 end
