@@ -7,13 +7,15 @@ Rails.application.routes.draw do
   patch 'admin/order_creates/:id' => 'order_create#show'
 
   scope module: :customer do
-    resources :orders, only: [:thanks, :index, :show, :new, :create, :confilm]
+    resources :orders, only: [:index, :show, :new, :create]
   end
+  get 'orders/thanks' => 'orders#thanks'
+  post 'orders/confirm' => 'orders#confirm'
 
   scope module: :customer do
-    resources :products, only: [:index, :show,] do
-      resources :cart_items, only: [:create, :index, :update, :destroy, :destroy_all]
-    end
+    resources :products, only: [:index, :show,]
+    resources :cart_items, only: [:create, :index, :update, :destroy]
   end
+  delete 'cart_items/:id' => 'cart_items#destroy_all'
 
 end
