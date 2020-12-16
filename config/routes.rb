@@ -8,7 +8,7 @@ Rails.application.routes.draw do
    resources :orders, only: [:index, :show, :update]
   end
 
-  get 'admin/order/top' => 'admins/orders#top'
+  get 'admin/order/top' => 'admin/orders#top'
 
   #admins/genreのルーティング
   namespace :admin do
