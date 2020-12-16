@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+
+  devise_for :customers, controllers: {
+  sessions:      'customer/sessions',
+  passwords:     'customer/passwords',
+  registrations: 'customer/registrations'
+  }
+
+  devise_for :admins, controllers: {
+  sessions:      'admin/sessions',
+  passwords:     'admin/passwords',
+  registrations: 'admin/registrations'
+  }
   
   devise_for :customers
   devise_for :admins
@@ -20,6 +32,5 @@ Rails.application.routes.draw do
 
   get "/customers/unsubscribe" => "customer/customers#unsubscribe"    #getメソッドでunsubscribeアクションにつながります
   patch "/customers" => "customer/customers#withdraw"                 #patchメソッドでwithdrawアクションにつながります
-
 
 end
