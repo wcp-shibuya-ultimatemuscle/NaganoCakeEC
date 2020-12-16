@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genre_id: 1
+  name: MyString
+  body: MyText
+  tax_out_proce: 1
+  image_id: MyText
+  is_active: false
+
+two:
+  genre_id: 1
+  name: MyString
+  body: MyText
+  tax_out_proce: 1
+  image_id: MyText
+  is_active: false
