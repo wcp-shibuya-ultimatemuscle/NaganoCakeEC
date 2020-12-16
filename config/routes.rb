@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :customers, path: 'customer', controllers: {
+  devise_for :customers, controllers: {
   sessions:      'customer/sessions',
   passwords:     'customer/passwords',
   registrations: 'customer/registrations'
