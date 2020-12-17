@@ -1,0 +1,43 @@
+<%= link_to "新規登録", new_admin_product_path %>
+
+<h3>商品一覧</h3>
+
+<table>
+   <thead>
+    <tr>
+     <th>商品ID</th>
+     <th>商品名</th>
+     <th>税抜価格</th>
+     <th>ジャンル</th>
+     <th>ステータス</th>
+    </tr>
+   </thead>
+   <% @products.each do |product| %>
+   <tbody>
+    <tr>
+     <!--商品ID-->
+     <td>
+      <%= product.id %>
+     </td>
+     <!--商品名-->
+     <td>
+      <%= link_to admin_product_path do %>
+       <%= product.name %>
+      <% end %>
+     </td>
+     <!--税抜価格-->
+     <td>
+      <p><%= product.taxout_price %></p>
+     </td>
+     <!--ジャンル-->
+     <td>
+      <p><%= product.genre %></p>
+     </td>
+     <!--ステータス-->
+     <td>
+      <%= product.status  %>
+     </td>
+    </tr>
+   </tbody>
+   <% end %>
+  </table>
