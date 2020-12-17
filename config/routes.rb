@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root to: 'customer/homes#top'
+  get '/about', to: 'customer/homes#about'
+
   devise_for :customers, controllers: {
   sessions:      'customer/sessions',
   passwords:     'customer/passwords',
@@ -11,53 +14,31 @@ Rails.application.routes.draw do
   passwords:     'admin/passwords',
   registrations: 'admin/registrations'
   }
-  
-  patch 'admin/order_creates/:id' => 'admin/order_creates#update'
 
   get 'orders/thanks' => 'customer/orders#thanks'
   post 'orders/confirm' => 'customer/orders#confirm'
+  get "/customers/unsubscribe" => "customer/customers#unsubscribe"
+  delete 'cart_items/:id' => 'customer/cart_items#destroy_all'
+  patch "/customers" => "customer/customers#withdraw"
+
+  get 'admin/orders/top' => 'admin/orders#top'
+  patch 'admin/order_creates/:id' => 'admin/order_creates#update'
+
 
   scope module: :customer do
     resources :products, only: [:index, :show,]
     resources :cart_items, only: [:create, :index, :update, :destroy]
     resources :orders, only: [:index, :show, :new, :create]
+    resources :receivers, except:[:new, :show]
+    resource :customers, only:[:show, :edit, :update]
   end
-  delete 'cart_items/:id' => 'customer/cart_items#destroy_all'
 
-  #admins/orderのルーティング
   namespace :admin do
    resources :orders, only: [:index, :show, :update]
-  end
-
-  get 'admin/order/top' => 'admin/orders#top'
-
-  #admins/genreのルーティング
-  namespace :admin do
    resources :genres, only: [:index, :update, :edit, :create]
-  end
-
-  #admins/productのルーティング
-  namespace :admin do
    resources :products, only: [:index, :new, :create, :show, :edit, :update]
+   resources :customers, only:[:index, :edit, :update, :show]
   end
-
-  root to: 'customer/homes#top'
-  get '/about', to: 'customer/homes#about'
-
-  namespace :admin do                                                  #admin/customersコントローラのルーティングです　5-7行
-    resources :customers, only:[:index, :edit, :update, :show]
-  end
-
-  scope module: :customer do                                          #customer/receiversコントローラのルーティングです　9-11行
-    resources :receivers, except:[:new, :show]
-  end
-
-  scope module: :customer do                                          #customer/customersコントローラのルーティングです  13-18行
-    resource :customers, only:[:show, :edit, :update]                 #showとeditのURLに:idを含ませないためresourceを単数形にしています
-  end
-
-  get "/customers/unsubscribe" => "customer/customers#unsubscribe"    #getメソッドでunsubscribeアクションにつながります
-  patch "/customers" => "customer/customers#withdraw"                 #patchメソッドでwithdrawアクションにつながります
 
 end
 
