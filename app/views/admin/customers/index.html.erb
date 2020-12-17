@@ -15,7 +15,11 @@
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
-              <td><%= customer.family_name %><%= customer.first_name %></td>
+              <td>
+                <%= link_to admin_customer_path(customer.id) do %>          <!--詳細ページのリンクを会員の名前につけました-->
+                  <%= customer.family_name %><%= customer.first_name %>
+                <% end %>
+              </td>
               <td><%= customer.email %></td>
               <td><%= customer.is_deleted %></td>
             </tr>
