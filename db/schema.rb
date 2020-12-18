@@ -11,7 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+
 ActiveRecord::Schema.define(version: 2020_12_17_075555) do
+
 
 
   create_table "admins", force: :cascade do |t|
@@ -66,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_075555) do
     t.integer "order_id"
     t.integer "quantity"
     t.integer "tax_in_price"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,9 +79,9 @@ ActiveRecord::Schema.define(version: 2020_12_17_075555) do
     t.string "address"
     t.string "name"
     t.integer "shipping"
-    t.integer "payment"
+    t.integer "payment", default: 0
     t.integer "sum"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
