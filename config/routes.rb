@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'admin/orders/top' => 'admin/orders#top'
   patch 'admin/order_creates/:id' => 'admin/order_creates#update'
 
+
   scope module: :customer do
     resources :products, only: [:index, :show,]
     resources :cart_items, only: [:create, :index, :update, :destroy]
