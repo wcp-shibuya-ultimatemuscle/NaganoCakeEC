@@ -8,5 +8,5 @@ class Customer < ApplicationRecord
   has_many :receivers, dependent: :destroy
   has_many :orders, dependent: :destroy
 
-  enum is_deleted: { user: false, non_user: true }
+  enum is_deleted: { 有効: false, 退会済: true }
 end
