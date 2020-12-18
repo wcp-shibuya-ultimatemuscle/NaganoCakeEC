@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   root to: 'customer/homes#top'
   get '/about', to: 'customer/homes#about'
 
-  devise_for :customers, controllers: {
+  devise_for :customers, path: 'customer', controllers: {
   sessions:      'customer/sessions',
   passwords:     'customer/passwords',
   registrations: 'customer/registrations'
   }
 
-  devise_for :admins, controllers: {
+  devise_for :admins, path: 'admin', controllers: {
   sessions:      'admin/sessions',
   passwords:     'admin/passwords',
   registrations: 'admin/registrations'
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create, :index, :update, :destroy]
     resources :orders, only: [:index, :show, :new, :create]
     resources :receivers, except:[:new, :show]
-    resource :customers, only:[:show, :edit, :update]
+    resource :customers, only:[:show, :edit, :update], as: "customer"
   end
 
   namespace :admin do
