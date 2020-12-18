@@ -12,8 +12,8 @@
 
 
 
-ActiveRecord::Schema.define(version: 2020_12_17_075555) do
 
+ActiveRecord::Schema.define(version: 2020_12_17_075555) do
 
 
   create_table "admins", force: :cascade do |t|
