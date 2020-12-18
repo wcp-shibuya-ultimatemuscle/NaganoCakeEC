@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   has_many :order_products, dependent: :destroy
   belongs_to :customer
-  
+
   # 支払方法
   enum payment: {"銀行振込": 0, "クレジットカード": 1}
   # 注文ステータス

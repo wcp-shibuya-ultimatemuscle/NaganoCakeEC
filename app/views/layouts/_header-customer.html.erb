@@ -1,0 +1,5 @@
+<h5>会員ヘッダー</h5>
+<p><%= link_to "マイページ", customers_path(current_customer.id) %></p>
+<p><%= link_to "商品一覧", products_path %></p>
+<p><%= link_to "カート", cart_items_path(current_customer.id) %></p>
+<p><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></p>

@@ -12,8 +12,8 @@
 
 
 
-ActiveRecord::Schema.define(version: 2020_12_18_021048) do
 
+ActiveRecord::Schema.define(version: 2020_12_18_021048) do
 
 
   create_table "admins", force: :cascade do |t|
@@ -57,15 +57,8 @@ ActiveRecord::Schema.define(version: 2020_12_18_021048) do
   end
 
   create_table "genres", force: :cascade do |t|
-<<<<<<< HEAD
+
     t.boolean "is_active", default: false
-=======
-<<<<<<< HEAD
-    t.boolean "is_active", default: false
-=======
-    t.boolean "is_active"
->>>>>>> 6be731791695d8a6474c34e3b39cfce0a761f6a4
->>>>>>> develop
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
