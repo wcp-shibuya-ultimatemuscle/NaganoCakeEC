@@ -6,15 +6,6 @@
 
 <%= link_to "テストAboutリンク", about_path %><br><br>
 
-<h4>ログイン状況:
-<% if admin_signed_in? %>
-  type:Admin:name:<%= current_admin.name %>
-<% elsif customer_signed_in? %>
-  type:Customer:family_name:<%= current_customer.family_name %>
-<% else %>
-  no login
-<% end %>
-</h4>
 <br>
 <%= link_to "Admin-新規登録", new_admin_registration_path %>◆
 <%= link_to "ログイン", new_admin_session_path %>◆
