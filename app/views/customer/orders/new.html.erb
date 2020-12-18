@@ -1,0 +1,16 @@
+<!--会員のヘッダーの部分テンプレート-->
+
+
+<!--注文情報入力フォーム-->
+<%= form_with model:@order, url: "orders/confilm", local: true do |f| %>
+  <h6>支払方法</h6>
+  <%= f.radio_button :order, :payment %>
+  <%= f.radio_button :order, :payment %>
+
+  
+  <h6>お届け先</h6>
+  <%= f.collection_check_boxes :address, Address.all, :id, :address %>
+  
+  <%= f.submit "確認画面へ進む" %>
+<% end %>
+
