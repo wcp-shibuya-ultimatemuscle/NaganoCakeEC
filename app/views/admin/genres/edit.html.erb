@@ -1,6 +1,11 @@
-<h3>ジャンル編集</h3>
+<h2>ジャンル編集</h2>
 
-<%= form_with model:genre, local :true do |f| %>
+<%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
+ <label for="inputGenre">ジャンル</label>
+ <%= f.text_field :type %>
+ <label><%= f.radio_button :is_active, "無効" %>無効</label>
+ <label><%= f.radio_button :is_active, "有効" %>有効</label>
+ <%= f.submit '変更を保存する' %>
+ <% end %>
 
 
-<%= submit '変更を保存する' %>
