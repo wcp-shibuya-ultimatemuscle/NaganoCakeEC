@@ -10,7 +10,6 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.genre_id = 1
     @product.save
     redirect_to admin_product_path(@product.id)
   end
@@ -21,8 +20,8 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    product.update
-    redirect_to admin_product_path
+    @product.update(product_params)
+    redirect_to admin_product_path(@product.id)
   end
 
   def show
@@ -33,7 +32,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:image_id, :name, :body, :genre_id, :tax_out_price, :status)
+    params.require(:product).permit(:image, :name, :body, :genre_id, :tax_out_price, :status)
   end
 
 end

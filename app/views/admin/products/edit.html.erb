@@ -1,6 +1,6 @@
 <h3>商品編集</h3>
 
-<%= form_with model: @product, local:true do |f| %>
+<%= form_with model: @product, url: admin_product_path(@product.id), local:true do |f| %>
  <!--商品画像-->
  <div>
   <label for="inputImage">Image</label>
@@ -14,12 +14,12 @@
  <!--商品説明-->
  <div>
   <label for="inputIntroduction">商品説明</label>
-  <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"商品説明" %>
+  <%= f.text_area :body, autofocus: true, id:"inputIntroduction", placeholder:"商品説明" %>
  </div>
  <!--ジャンル選択-->
  <div>
   <label for="inputGenre">ジャンル</label>
-  <%= f.collection_select(:type, @genre) ,include_blank: "選択して下さい" %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :type, include_blank: "選択して下さい" %>
  </div>
  <!--税抜価格-->
  <div>
@@ -29,7 +29,7 @@
  <!--販売ステータス-->
  <div>
   <label for="inputIsactive">販売ステータス</label>
-  <%= f.select :status [["販売中","0"],["売り切れ","1"]], include_blank: "選択して下さい" %>
+  <%= f.select :status, options_for_select(Product.statuses.keys), include_blank: '選択してください' %>
  </div>
  <div class="actions">
   <%= f.submit '編集する' %>
