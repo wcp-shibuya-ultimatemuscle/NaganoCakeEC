@@ -2,7 +2,7 @@
 
 
 <!--注文情報入力フォーム-->
-<%= form_with model:@order, url: "orders/confilm", local: true do |f| %>
+<%= form_with model:@order, url: orders_confirm_path, local: true do |f| %>
   <h4>支払方法</h4>
   <%= f.radio_button :order, :payment %>
   <%= f.label :payment, "クレジットカード", {value: :payment} %></br>
@@ -22,6 +22,6 @@
     <%#= f.text_field :postal_code, "郵便番号（ハイフンなし）", {value: :order} %></br>
     <%#= f.text_field :address, "住所", {value: :order} %></br>
     <%#= f.text_field :name, "宛名", {value: :order} %></br>
-    
+
   <%= f.submit "確認画面へ進む" %>
 <% end %>
