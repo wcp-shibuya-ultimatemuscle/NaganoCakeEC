@@ -4,6 +4,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
 
   end
 
