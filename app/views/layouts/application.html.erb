@@ -10,16 +10,24 @@
   </head>
 
   <body>
-    <% if admin_signed_in? %>
-      <%= render 'layouts/header-admin' %>
-    <% elsif customer_signed_in? %>
-      <%= render 'layouts/header-customer' %>
-    <% else %>
-      <%= render 'layouts/header' %>
-    <% end %>
-    <br>
-    --------ヘッダー--------
-    <br>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+        <div class="container">
+        <a class="navbar-brand" href="/"><span>ながのCAKE</span></a>
+        <div>
+          <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <%= render 'layouts/header-admin' %>
+          <% elsif customer_signed_in? %>
+            <%= render 'layouts/header-customer' %>
+          <% else %>
+            <%= render 'layouts/header' %>
+          <% end %>
+          </ul>
+        </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
