@@ -12,9 +12,5 @@ class Product < ApplicationRecord
     売切れ: 1
   }
 
-  def self.search(search)
-      return Genre.all unless search
-      Genre.where(['type LIKE ?', "%#{search}%"])
-  end
 
 end
