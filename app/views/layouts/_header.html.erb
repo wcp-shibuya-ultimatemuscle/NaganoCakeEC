@@ -1,5 +1,7 @@
-<li>未ログインヘッダー</li>・
-<li><%= link_to "About", about_path %></li>・
-<li><%= link_to "商品一覧", products_path %></li>・
-<li><%= link_to "新規登録", new_customer_registration_path %></li>・
-<li><%= link_to "ログイン", new_customer_session_path %></li>
+<span class="navbar-text">未ログインヘッダー</span>&emsp;&emsp;
+<form class="form-inline">
+  <li><%= link_to "About", about_path, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li><%= link_to "商品一覧", products_path, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li><%= link_to "ログイン", new_customer_session_path, class: "btn btn-sm btn-outline-warning" %></li>
+</form>

@@ -1,6 +1,8 @@
-<li>管理者ヘッダー</li>
-<li><%= link_to "商品一覧", admin_products_path %></li>・
-<li><%= link_to "会員一覧", admin_customers_path %></li>・
-<li><%= link_to "注文履歴一覧", admin_orders_path %></li>・　<!-- リンク先は全注文履歴表示 -->
-<li><%= link_to "ジャンル一覧", admin_genres_path %></li>・
-<li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+<span class="navbar-text">管理者ヘッダー</span>&emsp;&emsp;
+<form class="form-inline">
+  <li><%= link_to "商品一覧", admin_products_path, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li><%= link_to "会員一覧", admin_customers_path, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li><%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp; <!-- リンク先は全注文履歴表示 -->
+  <li><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn-outline-warning" %></li>
+</form>
