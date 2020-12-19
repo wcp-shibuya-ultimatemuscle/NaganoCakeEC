@@ -1,1 +1,27 @@
-<%= render 'customer/products/index', products: @products%>
+
+<h2>商品一覧(全<%= @products.count %>件)</h2>
+
+<% @genres.each do |genre| %>
+  <%= link_to genre.type, products_path(id: genre.id) %>
+<% end %>
+
+
+
+<% @products.each do |product| %>
+ <!--商品画像-->
+ <div>
+ <%= attachment_image_tag product, :image, size: "40x40", format: 'jpg', fallback: "no_image.jpg" %>
+ </div>
+ <!--商品名-->
+ <div>
+ <label for="inputName">商品名</label>
+ <%= link_to product_path(product.id) do %>
+  <%= product.name %>
+ <% end %>
+ </div>
+ <!--税抜価格-->
+ <div>
+ <label for="inputTaxoutprice">税抜価格</label>
+ <p><%= product.tax_out_price %>円</p>
+ </div>
+<% end %>

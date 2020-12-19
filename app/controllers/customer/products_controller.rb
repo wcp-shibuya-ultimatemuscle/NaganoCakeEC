@@ -1,7 +1,12 @@
 class Customer::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    if params[:id]
+      @products = Product.where(genre_id: params[:id])
+    else
+      @products = Product.all
+    end
+    @genres = Genre.all
   end
 
   def show
