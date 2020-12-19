@@ -2,6 +2,12 @@
 
 <div class="container">
    <div class="row">
-     <%= 
+     <table class="table">
+        <tr><th>購入者</th><td><%= customer.name %></td></tr>
+        <tr><th>配送先</th><td><%= (order.postal_code)+(order.address)+(order.name) %></td></tr>
+        <tr><th>支払方法</th><td><%= order.payment %></td></tr>
+        <tr><th>注文ステータス</th><td><%= %></td></tr>
+        <%= f.collection_select :genre_id, Genre.all, :id, :type, include_blank: '選択してください' %>
+     </table>
    </div>
 </div>
