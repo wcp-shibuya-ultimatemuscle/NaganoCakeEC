@@ -11,10 +11,10 @@ class Product < ApplicationRecord
     販売中: 0,
     売切れ: 1
   }
-  
+
   def self.search(search)
       return Genre.all unless search
-      G.where(['content LIKE ?', "%#{search}%"])
+      Genre.where(['type LIKE ?', "%#{search}%"])
   end
-  
+
 end
