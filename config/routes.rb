@@ -21,8 +21,10 @@ Rails.application.routes.draw do
   delete 'cart_items/:id' => 'customer/cart_items#destroy_all'
   patch "/customers" => "customer/customers#withdraw"
 
+
   get 'admin/orders/top' => 'admin/orders#top'
   patch 'admin/order_creates/:id' => 'admin/order_creates#update'
+
 
 
   scope module: :customer do
