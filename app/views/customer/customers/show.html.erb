@@ -5,8 +5,8 @@
       <div class = "col-md-6">
         <tr>
           <td>登録情報</td>
-          <td><%= link_to "編集する", edit_customers_path(1) %></td>  　　　　　　　　　　　　<!--後にpathの記述が変わります-->
-          <td><%= link_to "パスワードを変更", edit_customer_password_path(1) %></td>　　　<!--後にpathの記述が変わります-->
+          <td><%= link_to "編集する", edit_customer_path(@customer.id) %></td>
+          <td><%= link_to "パスワードを変更", edit_customer_registration_path(@customer.id) %></td>
         </tr>
       </div>
     </div>
