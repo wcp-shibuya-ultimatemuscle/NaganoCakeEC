@@ -1,5 +1,7 @@
-<li>会員ヘッダー</li>
-<li><%= link_to "マイページ", customers_path(current_customer.id) %></li>・
-<li><%= link_to "商品一覧", products_path %></li>・
-<li><%= link_to "カート", cart_items_path(current_customer.id) %></li>・
-<li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+<span class="navbar-text">ようこそ、<%= current_customer.family_name %>さん！</span>&emsp;&emsp;
+<form class="form-inline">
+  <li class="nav-item"><%= link_to "マイページ", customers_path(current_customer.id), class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li class="nav-item"><%= link_to "商品一覧", products_path, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li class="nav-item"><%= link_to "カート", cart_items_path(current_customer.id), class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+  <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn-outline-warning" %></li>
+</form>
