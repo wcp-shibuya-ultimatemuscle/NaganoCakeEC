@@ -25,6 +25,16 @@
               </ul>
         </div>
       </nav>
+      <% if admin_signed_in? && customer_signed_in?%>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #669999";>
+          <ul class="navbar-nav ml-auto">
+            <span class="navbar-text">注:AdminとCustomer両方でログインされています。</span>&emsp;&emsp;
+            <form class="form-inline">
+            <li><%= link_to "Logout", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn-outline-warning" %></li>&emsp;&emsp;
+          </ul>
+        </nav>
+      <% end %>
+      </nav>
     </header>
     <%= yield %>
   </body>
