@@ -1,3 +1,13 @@
-<h3>管理者画面</h3>
-
-<h3>本日の注文件数: <%= link_to @todayorder.count, admin_orders_path %> 件</h3> <!-- ここの注文件数は当日分のみ -->
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2>　 <span class="bg-light text-dark">管理者画面</span>　</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5 mx-auto">
+    <h1>本日の注文件数　　　　　<%= link_to @todayorder.count, admin_orders_path, class: "text-dark" %> 件</h1>
+    <!-- admin/ordersに遷移する。 ただし、表示する内容はOrder.where(created_at: Time.now.all_day).each do |o|-->
+    </div>
+  </div>
+</div>
