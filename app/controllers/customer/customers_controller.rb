@@ -19,9 +19,9 @@ class Customer::CustomersController < ApplicationController
 
   def withdraw
     customer = Customer.find(current_customer.id)
-    customer.is_deleted = true
-    customer.update(customer_is_deleted)
-    redirect_to root_path
+    customer.is_deleted = true                         #退会するボタンを押したとき現在ログインしているユーザーのis_deleteカラムをtrueに変えます。
+    customer.update(customer_is_deleted)               #下で作成しているcustomer_is_deletedメソッドを呼び出しています
+    redirect_to root_path                              #今はトップページに戻ってもログインしたままですが、ホクトさんにログイン状態の権限を設定してもらう予定です。
   end
 
 
@@ -31,6 +31,6 @@ class Customer::CustomersController < ApplicationController
   end
 
   def customer_is_deleted
-     params.permit(:is_deleted)
+     params.permit(:is_deleted)                  #require(:customer)を入れるとエラーが起きます。
   end
 end
