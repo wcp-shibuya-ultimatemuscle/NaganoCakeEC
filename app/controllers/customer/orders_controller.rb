@@ -12,8 +12,12 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
+<<<<<<< HEAD
     @order = Order.new
     @orders = Order.all
+=======
+    @order = Order.find(params[:id])
+>>>>>>> 310e5a27c5677617052b351925e90b5831e4a5e8
   end
 
   def create

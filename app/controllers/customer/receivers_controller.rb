@@ -8,8 +8,12 @@ class Customer::ReceiversController < ApplicationController
   def create
     @receiver = Receiver.new(receiver_params)
     @receiver.customer_id = current_customer.id
-    @receiver.save
-    redirect_to receivers_path
+    if @receiver.save
+      redirect_to receivers_path
+    else
+      @receivers = Receiver.where(customer_id: current_customer.id)
+      render :index
+    end
   end
 
   def edit
