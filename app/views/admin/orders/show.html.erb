@@ -1,22 +1,31 @@
-<h4>（管理者）注文履歴詳細</h4>
-<<<<<<< HEAD
+<!--（管理者）注文履歴詳細画面-->
 <div class="container">
   <div class="row">
-    <%= form_with model:@order, url: admin_order_path, local: true do |f| %>
-      <%= f.label "購入者" %></br>
-      <%#= link_to admin_customer_path do %>
-        <%#= @customer.family_name %><%# @customer.first_name %>
-      <%# end %>
-      <%= f.label "配送先" %></br>
-      <%#= @order.postal_code %><%#= @order.address %><%#= @order.name %>
-      <%= f.label "支払方法" %></br>
-      <%#= @order.status %>
-      <%= f.label "注文ステータス" %>
-      <%#= f.collection_select :status, Order.all, :id, :status %>
-    <% end %>
+    <table class="table">
+        <tr>
+          <th>購入者</th>
+          <th>配送先</th>
+          <th>支払方法</th>
+          <th>注文ステータス</th>
+        </tr>
+        <tr>
+          <td>
+            <%#= link_to admin_customer_path do %>
+              <%#= @customer.family_name %><%# @customer.first_name %>
+            <%# end %>
+          </td>
+          <td><%#= @order.postal_code %><%#= @order.address %><%#= @order.name %></td>
+          <td><%#= @order.status %></td>
+          <td>
+          <%= form_with model:@order, url: admin_order_path, local: true do |f| %>
+            <%#= f.collection_select :status, Order.all, :id, :status %>
+            <%#= link_to "更新", admin_order_path %>
+          <% end %>
+          </td>
+        </tr>
+    </div>
   </div>
   <div class="row">
-  <%= form_with model:@order, url: admin_order_path, local: true do |f| %>
     <table class="table">
       <thead>
         <tr>
@@ -25,7 +34,6 @@
           <th>数量</th>
           <th>小計</th>
           <th>製作ステータス</th>
-          <th></th>
         </tr>
       </thead></br>
       <tbody>
@@ -35,10 +43,13 @@
           <td><%= (order_product.product.tax_out_price).to_i * 1.1 %></td>
           <td><%= order_product.quantity %></td>
           <td><%= (order_product.product.tax_out_price).to_i * 1.1 * (order_product.quantity).to_i %></td>
-          <td><%= f.collection_select :status, OrderProduct.all, :id, :status %></td>
-          <td><%= f.submit "更新" %></td>
+          <td>
+          <%= form_with model:@order, url: admin_order_path, local: true do |f| %>
+            <%= f.collection_select :status, OrderProduct.all, :id, :status %>
+            <%= f.submit "更新" %>
+          <% end %>
+          </td>
         </tr>
-      <% end %>
       </tbody>
     </table>
     <% end %>
@@ -50,17 +61,3 @@
       <tr><th>請求額合計</th><td><%#= @order.devesum %></td></tr>
     </div>
   </div>
-=======
-
-<div class="container">
-   <div class="row">
-     <table class="table">
-        <tr><th>購入者</th><td><%= customer.name %></td></tr>
-        <tr><th>配送先</th><td><%= (order.postal_code)+(order.address)+(order.name) %></td></tr>
-        <tr><th>支払方法</th><td><%= order.payment %></td></tr>
-        <tr><th>注文ステータス</th><td><%= %></td></tr>
-        <%= f.collection_select :genre_id, Genre.all, :id, :type, include_blank: '選択してください' %>
-     </table>
-   </div>
->>>>>>> develop
-</div>
