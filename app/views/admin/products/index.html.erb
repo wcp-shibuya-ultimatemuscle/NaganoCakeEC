@@ -1,8 +1,15 @@
-<%= link_to "新規登録", new_admin_product_path %>
+<div class="container">
+
+<!--新規登録ボタン(右寄せ)-->
+<div class="float-right">
+ <%= link_to new_admin_product_path do %>
+ <h2><i class="fas fa-plus-square"></i></h2>
+ <% end %>
+</div>
 
 <h3>商品一覧</h3>
 
-<table>
+<table class="table table-hover">
    <thead>
     <tr>
      <th>商品ID</th>
@@ -41,3 +48,5 @@
    </tbody>
    <% end %>
   </table>
+
+ </div>

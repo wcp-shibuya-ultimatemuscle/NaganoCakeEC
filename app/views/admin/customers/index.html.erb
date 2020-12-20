@@ -16,7 +16,7 @@
             <tr>
               <td><%= customer.id %></td>
               <td>
-                <%= link_to admin_customer_path(customer.id) do %>          <!--詳細ページのリンクを会員の名前につけました-->
+                <%= link_to admin_customer_path(customer.id) do %>
                   <%= customer.family_name %><%= customer.first_name %>
                 <% end %>
               </td>

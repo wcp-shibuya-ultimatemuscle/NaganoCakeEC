@@ -19,6 +19,17 @@ Customer.create!(email: 'customer@email',
                  address: 'sampleaddress',
                  tel: '12345678901')
 
+Customer.create!(email: 'customer@email2',
+                 password: 'password',
+                 family_name: 'sample',
+                 first_name: 'customer',
+                 family_kana: 'samplekana',
+                 first_kana: 'customerkana',
+                 postal_code: '1234567',
+                 address: 'sampleaddress',
+                 tel: '12345678901',
+                 is_deleted: true)
+
 Genre.create!(type: '菓子')
 
 Product.create!(genre_id: '1',
