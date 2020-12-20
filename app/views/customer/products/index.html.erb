@@ -1,28 +1,31 @@
-<!--ジャンル検索の部分テンプレート-->
-<%= render 'customer/products/genre', genres: @genres %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-5">
+   <!--ジャンル検索の部分テンプレート-->
+   <%= render 'customer/products/genre', genres: @genres %>
+  </div>
 
-<h2>商品一覧(全<%= @products.count %>件)</h2>
-
-
-
-<% @products.each do |product| %>
- <!--商品画像-->
- <div>
- <%= attachment_image_tag product, :image, size: "40x40", format: 'jpg', fallback: "no_image.jpg" %>
+  <div class="col-md-7">
+   <h2>商品一覧(全<%= @products.count %>件)</h2>
+   <% @products.each do |product| %>
+    <!--商品画像-->
+    <div>
+     <%= attachment_image_tag product, :image, size: "40x40", format: 'jpg', fallback: "no_image.jpg" %>
+    </div>
+    <!--商品名-->
+    <div>
+     <label for="inputName">商品名</label>
+     <%= link_to product_path(product.id) do %>
+     <%= product.name %>
+     <% end %>
+    </div>
+    <!--税抜価格-->
+    <div>
+     <label for="inputTaxoutprice">税抜価格</label>
+     <p><%= product.tax_out_price %>円</p>
+    </div>
+   <% end %>
+  </div>
+ <%#= paginate @products %>
  </div>
- <!--商品名-->
- <div>
- <label for="inputName">商品名</label>
- <%= link_to product_path(product.id) do %>
-  <%= product.name %>
- <% end %>
- </div>
- <!--税抜価格-->
- <div>
- <label for="inputTaxoutprice">税抜価格</label>
- <p><%= product.tax_out_price %>円</p>
- </div>
-<% end %>
-
-<%#= paginate @products %>
-
+</div>

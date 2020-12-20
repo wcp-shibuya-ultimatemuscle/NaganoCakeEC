@@ -1,5 +1,7 @@
 <h3>ジャンル検索</h3>
 
 <% genres.each do |genre| %>
-  <%= link_to genre.type, products_path(id: genre.id) %>
+ <ul>
+  <li><%= link_to genre.type, products_path(id: genre.id) %></li>
+ </ul>
 <% end %>
