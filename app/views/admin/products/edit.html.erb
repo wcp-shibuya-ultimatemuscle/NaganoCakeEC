@@ -1,37 +1,47 @@
+<div class="container">
+
 <h3>商品編集</h3>
 
 <%= form_with model: @product, url: admin_product_path(@product.id), local:true do |f| %>
- <!--商品画像-->
- <div>
-  <label for="inputImage">Image</label>
-  <%= f.attachment_field :image, placeholder: "商品画像" %>
+ <div class="row">
+  <div class="clo-md-5">
+   <!--商品画像-->
+   <div>
+    <label for="inputImage">Image</label>
+    <%= f.attachment_field :image, placeholder: "商品画像" %>
+   </div>
+  </div>
+  <div class="col-md-7">
+   <div>
+    <!--商品名-->
+    <label for="inputName">商品名</label>
+    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %>
+   </div>
+   <div>
+    <!--商品説明-->
+    <label for="inputIntroduction">商品説明</label>
+    <%= f.text_area :body, autofocus: true, id:"inputIntroduction", placeholder:"商品説明" %>
+   </div>
+   <div>
+    <!--ジャンル選択-->
+    <label for="inputGenre">ジャンル</label>
+    <%= f.collection_select :genre_id, Genre.all, :id, :type, include_blank: "選択して下さい" %>
+   </div>
+   <div>
+    <!--税抜価格-->
+    <label for="inputTaxoutprice">税抜価格</label>
+    <%= f.text_field :tax_out_price, autofocus: true, id:"inputTaxoutprice", placeholder:"税抜価格" %>
+   </div>
+   <div>
+    <!--販売ステータス-->
+    <label for="inputIsactive">販売ステータス</label>
+    <%= f.select :status, options_for_select(Product.statuses.keys), include_blank: '選択してください' %>
+   </div>
+   <div class="actions">
+   <%= f.submit '編集する', class: "btn btn-sm btn-info" %>
+   </div>
+  </div>
  </div>
- <div>
-  <!--商品名-->
-  <label for="inputName">商品名</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %>
- </div>
- <!--商品説明-->
- <div>
-  <label for="inputIntroduction">商品説明</label>
-  <%= f.text_area :body, autofocus: true, id:"inputIntroduction", placeholder:"商品説明" %>
- </div>
- <!--ジャンル選択-->
- <div>
-  <label for="inputGenre">ジャンル</label>
-  <%= f.collection_select :genre_id, Genre.all, :id, :type, include_blank: "選択して下さい" %>
- </div>
- <!--税抜価格-->
- <div>
-  <label for="inputTaxoutprice">税抜価格</label>
-  <%= f.text_field :tax_out_price, autofocus: true, id:"inputTaxoutprice", placeholder:"税抜価格" %>
- </div>
- <!--販売ステータス-->
- <div>
-  <label for="inputIsactive">販売ステータス</label>
-  <%= f.select :status, options_for_select(Product.statuses.keys), include_blank: '選択してください' %>
- </div>
- <div class="actions">
-  <%= f.submit '編集する', class: "btn btn-sm btn-info" %>
- </div>
-<% end %>
+ <% end %>
+
+</div>
