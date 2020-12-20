@@ -9,4 +9,9 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   enum is_deleted: { 有効: false, 退会済: true }
+
+  def active_for_authentication?
+    super && self.is_deleted == "退会済"
+  end
+
 end
