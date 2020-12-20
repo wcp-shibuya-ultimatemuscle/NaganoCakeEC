@@ -32,6 +32,6 @@
   <%= f.select :status, options_for_select(Product.statuses.keys), include_blank: '選択してください' %>
  </div>
  <div class="actions">
-  <%= f.submit '編集する' %>
+  <%= f.submit '編集する', class: "btn btn-sm btn-info" %>
  </div>
 <% end %>
