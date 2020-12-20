@@ -11,19 +11,20 @@
         </tr>
       </thead>
       <tbody>
-      <% @products.each do |product| %>
+      <%# @products.each do |product| %>
         <tr>
-          <td><%= product.name %></td>
-          <td><%= (product.tax_out_price).to_i * 1.1 %></td>
+          <td><%#= product.name %></td>
+          <td><%#= (product.tax_out_price).to_i * 1.1 %></td>
           <td>
-            <%= form_with model: @product, url: cart_items_path, local:true do |f| %>
-              <%= f.number_field :quantity, min: 0 %>
-            <% end %>
+            <%#= form_with model: @product, url: cart_items_path, local:true do |f| %>
+              <%#= f.number_field :quantity, min: 0 %>
+            <%# end %>
           </td>
-          <td><%= (product.tax_out_price).to_i * 1.1 * (product.quantity).to_i %></td>
-          <td><%= %></td>
+          <td><%#= (product.tax_out_price).to_i * 1.1 * (product.quantity).to_i %></td>
+          <td><%#= %></td>
         </tr>
       </tbody>
+      <%# end %>
     </table>
   </div>
   <div class="row">

@@ -12,6 +12,8 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.new
+    @orders = Order.all
   end
 
   def create
