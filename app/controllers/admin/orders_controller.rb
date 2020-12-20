@@ -8,4 +8,13 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.all
   end 
 
+  def index
+  end
+
+  def show
+    #@customer = Customer.find(params[:id])
+    #@order = Order.find(params[:id])
+    @order_products = OrderProduct.all
+  end
+
 end
