@@ -12,6 +12,21 @@ class Customer::ReceiversController < ApplicationController
     redirect_to receivers_path
   end
 
+  def edit
+    @receiver = Receiver.find(params[:id])
+  end
+
+  def update
+    receiver = Receiver.find(params[:id])
+    receiver.update(receiver_params)
+    redirect_to receivers_path
+  end
+
+  def destroy
+    receiver = Receiver.find(params[:id])
+    receiver.destroy
+    redirect_to receivers_path
+  end
 
   private
 

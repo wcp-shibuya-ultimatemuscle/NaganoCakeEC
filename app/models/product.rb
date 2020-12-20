@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   enum status: {
     販売中: 0,
     売切れ: 1
-
   }
+
+
 end

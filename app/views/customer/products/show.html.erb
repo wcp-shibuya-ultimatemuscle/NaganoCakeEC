@@ -1,7 +1,11 @@
+<!--ジャンル検索の部分テンプレート-->
+<%= render 'customer/products/genre', genres: @genres %>
+<br>
+
 <!--商品詳細-->
 <%= attachment_image_tag @product, :image, size: "30x30", format: 'jpg', fallback: "no_image.jpg" %>
  <!--商品名-->
-  <h2><%= @product.name %></h2>
+  <h3><%= @product.name %></h3>
  <!--税抜価格-->
  <label for="inputTaxoutprice">税抜価格</label>
  <p><%= @product.tax_out_price %>円</p>
@@ -9,7 +13,7 @@
  <!--個数選択-->
 <%= form_with model: @product, url: cart_items_path, local:true do |f| %>
  <label>数量</label>
- <%= f.number_field :quantity, include_blank: '選択してください' %>
+ <%= f.number_field :quantity, min: 0, include_blank: '選択してください' %>
  <%= f.submit "カートに入れる" %>
 <% end %>
 
