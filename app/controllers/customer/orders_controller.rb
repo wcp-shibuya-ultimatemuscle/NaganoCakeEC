@@ -12,6 +12,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.find(params[:id])
   end
 
   def create
