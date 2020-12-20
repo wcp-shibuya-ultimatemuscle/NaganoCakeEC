@@ -1,16 +1,16 @@
 class Customer::CartItemsController < ApplicationController
-  
+
   def index
-    @products = Product.all
-  end 
-  
+
+  end
+
   def destroy
-    
-  end 
-  
+
+  end
+
   def destroy_all
     CartItems.destroy_all
     redirect_to cart_items_path（）
-end
-  
+  end
+
 end
