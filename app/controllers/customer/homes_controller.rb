@@ -2,7 +2,7 @@ class Customer::HomesController < ApplicationController
 
   def top
     @genres = Genre.all
-    @products = Product.all
+    @products = Product.where(genre_id: Genre.where(is_active: "有効")).last(4)
   end
 
   def about
