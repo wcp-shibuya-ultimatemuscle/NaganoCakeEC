@@ -1,20 +1,42 @@
+<div class="container">
+
 <h3>商品詳細</h3>
  <!--商品画像-->
- <%= attachment_image_tag @product, :image, size: "30x30", format: 'jpg', fallback: "no_image.jpg" %>
- <!--商品名-->
- <label for="inputName">商品名</label>
- <%= @product.name %>
- <!--商品説明-->
- <label for="inputBody">商品説明</label>
- <%= @product.body %>
- <!--ジャンル-->
- <label for="inputGenre">ジャンル</label>
- <%= @product.genre.type %>
- <!--税抜価格-->
- <label for="inputTaxoutprice">税抜価格</label>
- <%= @product.tax_out_price %>
- <!--販売ステータス-->
- <label for="inputIsactive">販売ステータス</label>
- <%= @product.status %>
+ <div class="row">
+  <div class="col-md-5">
+   <%= attachment_image_tag @product, :image, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+  </div>
 
- <%= link_to "編集する", edit_admin_product_path %>
+  <div class="col-md-7">
+   <div>
+    <!--商品名-->
+    <label for="inputName">商品名</label>
+    <%= @product.name %>
+   </div>
+   <div>
+    <!--商品説明-->
+    <label for="inputBody">商品説明</label>
+    <%= @product.body %>
+   </div>
+   <div>
+    <!--ジャンル-->
+    <label for="inputGenre">ジャンル</label>
+    <%= @product.genre.type %>
+   </div>
+   <div>
+    <!--税抜価格-->
+    <label for="inputTaxoutprice">税抜価格</label>
+    <%= @product.tax_out_price %>
+   </div>
+   <div>
+    <!--販売ステータス-->
+    <label for="inputIsactive">販売ステータス</label>
+    <%= @product.status %>
+   </div>
+   <div>
+    <%= link_to "編集する", edit_admin_product_path, class: "btn btn-sm btn-info" %>
+   </div>
+  </div>
+ </div>
+
+</div>

@@ -4,4 +4,13 @@ class Admin::OrdersController < ApplicationController
     @todayorder = Order.where(created_at: Time.now.all_day) #本日作成したOrderを代入
   end
 
+  def index
+  end
+
+  def show
+    #@customer = Customer.find(params[:id])
+    #@order = Order.find(params[:id])
+    @order_products = OrderProduct.all
+  end
+
 end
