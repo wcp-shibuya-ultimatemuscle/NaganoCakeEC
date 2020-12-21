@@ -12,14 +12,35 @@
           <tr>
             <td>郵便番号(ハイフンなし)</td>
             <td><%= f.text_field :postal_code %></td>
+            <td>
+              <% if @receiver.errors.any? %>
+                <% @receiver.errors.full_messages_for(:postal_code).each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td>住所</td>
             <td><%= f.text_field :address %></td>
+            <td>
+              <% if @receiver.errors.any? %>
+                <% @receiver.errors.full_messages_for(:address).each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td>宛名</td>
             <td><%= f.text_field :name %></td>
+            <td>
+              <% if @receiver.errors.any? %>
+                <% @receiver.errors.full_messages_for(:name).each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              <% end %>
+            </td>
           </tr>
         </table>
         <div class="col-md-3">
