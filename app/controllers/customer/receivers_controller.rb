@@ -21,9 +21,12 @@ class Customer::ReceiversController < ApplicationController
   end
 
   def update
-    receiver = Receiver.find(params[:id])
-    receiver.update(receiver_params)
-    redirect_to receivers_path
+    @receiver = Receiver.find(params[:id])
+    if @receiver.update(receiver_params)
+      redirect_to receivers_path
+    else
+      render :edit
+    end
   end
 
   def destroy
