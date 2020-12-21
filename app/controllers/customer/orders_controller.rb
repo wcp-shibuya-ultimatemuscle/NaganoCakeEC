@@ -12,7 +12,9 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.find(params[:id])
+    @order = Order.new(orders_params)
+    @customer = current_customer
+    @order.save
   end
 
   def create
@@ -24,7 +26,7 @@ class Customer::OrdersController < ApplicationController
 
   private
   def orders_params
-    params.require(:order).permit(:user_id, :postal_code, :address, :name, :shipping, :payment, :sum)
+    params.permit(:customer_id, :postal_code, :address, :name, :shipping, :payment, :sum)
   end
 
 end
