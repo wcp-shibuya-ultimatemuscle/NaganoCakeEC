@@ -11,7 +11,7 @@
  <p><%= @product.tax_out_price %>円</p>
 
  <!--個数選択-->
-<%= form_with model: @product, url: cart_items_path, local:true do |f| %>
+<%= form_with model: @cart, url: cart_items_path(id: @product.id), method: :get, local:true do |f| %>
  <label>数量</label>
  <%= f.number_field :quantity, min: 0, include_blank: '選択してください' %>
  <%= f.submit "カートに入れる" %>

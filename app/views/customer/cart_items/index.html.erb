@@ -14,35 +14,24 @@
         </tr>
       </thead>
       <tbody>
-      <%# @products.each do |product| %>
+      <% @carts.each do |cart| %>
         <tr>
-          <td><%#= product.name %></td>
-          <td><%#= (product.tax_out_price).to_i * 1.1 %></td>
+          <td><%= cart.product_id.name %></td>
+          <td><%= (cart.product_id.tax_out_price).to_i * 1.1 %></td>
           <td>
-<<<<<<< HEAD
-            <%#= form_with model: @product, url: cart_items_path, local:true do |f| %>
-              <%#= f.number_field :quantity, min: 0 %>
-            <%# end %>
-          </td>
-          <td><%#= (product.tax_out_price).to_i * 1.1 * (product.quantity).to_i %></td>
-          <td><%#= %></td>
-        </tr>
-      </tbody>
-      <%# end %>
-=======
           <%= form_with model: @product, url: cart_items_path, local:true do |f| %>
             <%= f.number_field :quantity, min: 0 %>
             <%= f.submit "変更" %>
           <% end %>
           </td>
-          <td><%= (product.tax_out_price).to_i * 1.1 * (product.quantity).to_i %></td>
+          <td><%= (product.tax_out_price).to_i * 1.1 * (order_product.quantity).to_i %></td>
           <td>
             <%= link_to "削除する", cart_items_path(), method: :delete %>
           </td>
         </tr>
       </tbody>
       <% end %>
->>>>>>> 310e5a27c5677617052b351925e90b5831e4a5e8
+
     </table>
   </div>
   <div class="row">

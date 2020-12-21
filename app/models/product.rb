@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
+
   has_many :carts, dependent: :destroy
   has_many :order_products, dependent: :destroy
+  has_many :customers, through: :carts
   belongs_to :genre
 
   attachment :image

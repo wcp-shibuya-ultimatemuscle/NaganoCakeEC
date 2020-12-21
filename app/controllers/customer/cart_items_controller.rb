@@ -1,14 +1,8 @@
 class Customer::CartItemsController < ApplicationController
-<<<<<<< HEAD
-  
-  def index
-    @products = Product.all
-  end
-  
-=======
+
 
   def index
-
+    @carts = Cart.all
   end
 
   def destroy
@@ -20,5 +14,5 @@ class Customer::CartItemsController < ApplicationController
     redirect_to cart_items_path（）
   end
 
->>>>>>> 310e5a27c5677617052b351925e90b5831e4a5e8
+
 end
