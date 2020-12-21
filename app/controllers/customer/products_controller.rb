@@ -9,19 +9,9 @@ class Customer::ProductsController < ApplicationController
     end
   end
 
-
-
-
   def show
     @genres = Genre.all
     @product = Product.find(params[:id])
-    @cart = Cart.new(cart_params)
-    @cart.customer_id = current_customer.id
-    @cart.product_id = @product.id
-    #@cart.quantity = params[:quantity]
-    if @cart.save
-      #redirect_to cart_items_path(customer_id: current_customer.id)
-    end
   end
 
   private
@@ -29,12 +19,6 @@ class Customer::ProductsController < ApplicationController
   def product_params
     params.require(@product).permit(:name, :tax_out_price)
   end
-
-  def cart_params
-    params.permit(:product_id, :customer_id, :quantity)
-  end
-
-
 
 
 end
