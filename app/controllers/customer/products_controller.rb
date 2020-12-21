@@ -9,9 +9,6 @@ class Customer::ProductsController < ApplicationController
     end
   end
 
-
-
-
   def show
     @genres = Genre.all
     @product = Product.find(params[:id])
@@ -22,7 +19,6 @@ class Customer::ProductsController < ApplicationController
   def product_params
     params.require(@product).permit(:name, :tax_out_price)
   end
-
 
 
 end

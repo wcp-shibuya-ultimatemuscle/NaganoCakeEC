@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'orders/thanks' => 'customer/orders#thanks'
   post 'orders/confirm' => 'customer/orders#confirm'
   get "/customers/unsubscribe" => "customer/customers#unsubscribe"
-  delete 'cart_items/:id' => 'customer/cart_items#destroy_all'
+  delete 'cart_items/destroy_all/:id' => 'customer/cart_items#destroy_all', as: "destroy_all"
   patch "/customers/withdraw" => "customer/customers#withdraw"
 
 

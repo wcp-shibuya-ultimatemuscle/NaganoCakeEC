@@ -1,24 +1,48 @@
 class Customer::CartItemsController < ApplicationController
-<<<<<<< HEAD
-  
+
+
   def index
-    @products = Product.all
+    @carts = Cart.where(customer_id: current_customer.id)
+    @subtotal = 0
+    @total = 0
   end
-  
-=======
 
-  def index
+  def create
+    @cart = Cart.new(cart_params)
+    @cart.customer_id = current_customer.id
+    @cart.product_id = params[:id]
+    @cart.save
+    redirect_to cart_items_path(current_customer.id)
+  end
 
+  def update
+    @cart = Cart.find(params[:id])
+    @cart.quantity = params[:quantity]
+    @cart.update(quantity_params)
+    redirect_to request.referer
   end
 
   def destroy
-
+    @cart = Cart.find(params[:id])
+    @cart.destroy
+    redirect_to request.referer
   end
 
   def destroy_all
-    CartItems.destroy_all
-    redirect_to cart_items_path（）
+    @cart = Cart.where(customer_id: params[:id])
+    @cart.destroy_all
+    redirect_to request.referer
   end
 
->>>>>>> 310e5a27c5677617052b351925e90b5831e4a5e8
+  private
+
+  def cart_params
+    params.permit(:product_id, :customer_id, :quantity)
+  end
+
+  def quantity_params
+    params.permit(:quantity)
+  end
+
+
 end

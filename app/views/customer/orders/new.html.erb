@@ -11,11 +11,9 @@
   <h4>お届け先</h4>
   <%= f.radio_button :order, :address %>
   <%= f.label :address, "ご自身の住所", {value: :order} %></br>
-<<<<<<< HEAD
-    <%#= @orders.customer.address %>
-=======
+
     <%= @order.customer.address %>
->>>>>>> 310e5a27c5677617052b351925e90b5831e4a5e8
+
   <%= f.radio_button :order, :address %>
   <%= f.label :address, "登録済み住所から選択", {value: :order} %></br>
     <%#= @order.customer.address %>
