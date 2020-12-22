@@ -16,5 +16,8 @@
     <p>郵便番号（ハイフンなし）<%= text_field_tag 'receiver[postal_code]' %></p>
     <p>住所<%= text_field_tag 'receiver[address]' %></p>
     <p>宛名<%= text_field_tag 'receiver[name]' %></p>
+  <%#= fields_for :cart ,(@carts) do |carts| %>
+    <%#= carts.text_field :cart, value: @carts %>
+  <%# end %>
   <%= f.submit "確認画面へ進む" %>
 <% end %>

@@ -21,12 +21,16 @@ class Customer::OrdersController < ApplicationController
     @order = Order.new(orders_params)
     @order.customer_id = current_customer.id
     @order.save
-    cart = Cart.where(customer_id: current_customer.id)
-    cart.destroy_all
+    @carts = Cart.where(customer_id: current_customer.id)
+    @order_product = OrderProduct.new(order_product_params)
+    @order_product.order_id = @order.id
+    @order_product.save
+    #cart.destroy_all
     redirect_to orders_thanks_path
   end
 
   def confirm
+    @kaime = 0
     @carts = Cart.where(customer_id: current_customer.id)
     @subtotal = 0
     @total = 0
@@ -61,6 +65,14 @@ class Customer::OrdersController < ApplicationController
 
   def receiver_params
     params.require(:receiver).permit(:postal_code, :address, :name)
+  end
+
+  def cart_params
+    params.permit(:product_id, :customer_id, :quantity)
+  end
+
+  def order_product_params
+    params.require(:order_product).permit(:product_id, :order_id, :quantity, :tax_in_price, :status)
   end
 
 end
