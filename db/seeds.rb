@@ -68,3 +68,43 @@ Product.create!(genre_id: '1',
                 tax_out_price: '2000',
                 created_at: "12 Dec 2020 16:07:43"
                 )
+
+
+Order.create!(customer_id: '1',
+              postal_code: '2560094',
+              address: 'america',
+              name: 'pikuru',
+              shipping: '800',
+              payment: 1,
+              sum: '11000',
+              status: 0,
+              created_at: '12 Dec 2020 16:39:49',
+              updated_at: '12 Dec 2020 16:43:35'
+              )
+
+OrderProduct.create!(product_id: '1',
+                     order_id: '1',
+                     quantity: '20',
+                     tax_in_price: '11000',
+                     status: 0,
+                     created_at: '12 Dec 2020 17:07:47',
+                     updated_at: '12 Dec 2020 19:19:23'
+                    )
+
+
+Order.create!(customer_id: '1',
+              postal_code: '2560094',
+              address: 'america',
+              name: 'pikuru',
+              shipping: '800',
+              payment: 1,
+              sum: '11000',
+              status: 0,
+              )
+
+OrderProduct.create!(product_id: '1',
+                     order_id: '2',
+                     quantity: '50',
+                     tax_in_price: '11000',
+                     status: 0,
+                     )
