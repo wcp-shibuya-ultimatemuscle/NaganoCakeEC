@@ -5,17 +5,16 @@
   <label><%= f.radio_button :payment, "クレジットカード" %>クレジットカード</label></br>
 
   <h4>お届け先</h4>
-  <label><%= f.radio_button :address, @customer.address %>ご自身の住所</label>
-  <%#= f.radio_button :order, :address %>
-  <%#= f.label :address, "ご自身の住所", {value: :order} %></br>
-    <%#= @customer.address %></br>
-  <%#= f.radio_button :order, :address %>
-  <%#= f.label :address, "登録済み住所から選択", {value: :order} %></br>
-    <%#= f.collection_select :address, Receiver.where(customer_id: current_customer.id), :id, :address, include_blank: '選択してください' %></br>
-  <%#= f.radio_button :order, :address %>
-  <%#= f.label :address, "新しいお届け先" %></br>
-    <%#= f.text_field :postal_code %></br>
-    <%#= f.text_field :address %></br>
-    <%#= f.text_field :name %></br>
+  <!--ご自身の住所-->
+  <label><%= radio_button_tag("select_name", 0) %>ご自身の住所</label>
+    <%= f.label @customer.address %></br>
+  <!--登録済み住所から選択-->
+  <label><%= radio_button_tag("select_name", 1) %>登録済み住所から選択</label></br>
+    <%= f.collection_select :receiver_id, current_customer.receivers, :id, :address, include_blank: '選択してください'%></br>
+  <!--新しいお届け先-->
+  <label><%= radio_button_tag("select_name", 2) %>新しいお届け先</label>
+    <p>郵便番号（ハイフンなし）<%= text_field_tag 'receiver[postal_code]' %></p>
+    <p>住所<%= text_field_tag 'receiver[address]' %></p>
+    <p>宛名<%= text_field_tag 'receiver[name]' %></p>
   <%= f.submit "確認画面へ進む" %>
 <% end %>
