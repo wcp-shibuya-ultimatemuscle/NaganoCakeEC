@@ -18,11 +18,16 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-        #@order.save
-
+    @order = Order.new(orders_params)
+    @order.customer_id = current_customer.id
+    @order.save
+    redirect_to orders_thanks_path
   end
 
   def confirm
+    @carts = Cart.where(customer_id: current_customer.id)
+    @subtotal = 0
+    @total = 0
     @order = Order.new(orders_params)
     @order.customer_id = current_customer.id
     # ご自身の住所なら
