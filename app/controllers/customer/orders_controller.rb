@@ -21,6 +21,8 @@ class Customer::OrdersController < ApplicationController
     @order = Order.new(orders_params)
     @order.customer_id = current_customer.id
     @order.save
+    cart = Cart.where(customer_id: current_customer.id)
+    cart.destroy_all
     redirect_to orders_thanks_path
   end
 
