@@ -10,8 +10,15 @@ class Customer::CartItemsController < ApplicationController
   def create
     @cart = Cart.new(cart_params)
     @cart.customer_id = current_customer.id
-    @cart.product_id = params[:id]
-    @cart.save
+    customercart = Cart.where(customer_id: current_customer.id)
+    alreadycart = customercart.find_by(product_id: params[:id])
+    if alreadycart
+      alreadycart.quantity += params[:quantity].to_i
+      alreadycart.save
+    else
+      @cart.product_id = params[:id]
+      @cart.save
+    end
     redirect_to cart_items_path(current_customer.id)
   end
 
