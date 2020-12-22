@@ -23,7 +23,6 @@
           <% end %>
           </td>
           <td><%= ((cart.product.tax_out_price).to_i * 1.1 * (cart.quantity).to_i).round %></td>
-          <!--テーブルデスクタグを外してテーブル見やすくしました-->
           <% @subtotal = ((cart.product.tax_out_price).to_i * 1.1 * (cart.quantity).to_i).round %>
           <% @total = @total + @subtotal %>
           <td><%= link_to "削除する", cart_item_path(cart.id), method: :delete %></td>
