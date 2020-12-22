@@ -2,10 +2,14 @@ class Customer::ProductsController < ApplicationController
 
   def index
     @genres = Genre.where(is_active: "有効")
+
     if params[:id]
-      @products = Product.where(genre_id: params[:id])
+      @product = Product.where(genre_id: params[:id])
+      @products = Product.where(genre_id: params[:id]).page(params[:page])
+      @genre = Genre.find(params[:id])
     else
-      @products = Product.where(genre_id: (Genre.where(is_active: "有効")))
+      @product = Product.where(genre_id: (Genre.where(is_active: "有効")))
+      @products = Product.where(genre_id: (Genre.where(is_active: "有効"))).page(params[:page])
     end
   end
 
