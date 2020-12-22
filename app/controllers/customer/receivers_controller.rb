@@ -1,8 +1,10 @@
 class Customer::ReceiversController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @receiver = Receiver.new
     @receivers = Receiver.where(customer_id: current_customer.id)
+
   end
 
   def create
@@ -18,6 +20,9 @@ class Customer::ReceiversController < ApplicationController
 
   def edit
     @receiver = Receiver.find(params[:id])
+    unless @receiver.customer_id == current_customer.id
+      redirect_to receivers_path
+    end
   end
 
   def update
