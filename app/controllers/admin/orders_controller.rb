@@ -15,6 +15,8 @@ class Admin::OrdersController < ApplicationController
     redirect_to request.referer
   end
 
+
+
   def show
     @order = Order.find(params[:id])
     @order_products = OrderProduct.all
