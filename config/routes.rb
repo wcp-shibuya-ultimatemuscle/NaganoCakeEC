@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 
   get 'admin/orders/top' => 'admin/orders#top'
-  patch 'admin/order_creates/:id' => 'admin/order_creates#update'
+  patch 'admin/order_creates/:id' => 'admin/order_creates#update', as: "order_creates"
 
 
 

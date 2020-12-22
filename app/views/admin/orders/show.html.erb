@@ -4,7 +4,6 @@
 <% else %>
   @order.id = <%= @order.id %><br>
   @order.customer.family_name = <%= @order.customer.family_name %><br>
-  @order.status = <%= @order.status %><br>
 <% end %><br>
 <!-- テスト記述ここまで -->
 
@@ -26,10 +25,12 @@
           </td>
           <td>〒：<%= @order.postal_code %>　住所：<%= @order.address %>　名前：<%= @order.name %></td>
           <td><%= @order.payment %></td>
+          <td>保存確認：<%= @order.status %></td>
           <td>
           <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
             <%= f.select :status, options_for_select(Order.statuses.keys, selected: @order.status)%>
             <%= f.submit "更新" %>
+          </td>
           <% end %>
           </td>
         </tr>
@@ -39,30 +40,33 @@
     <table class="table">
       <thead>
         <tr>
+          <th>ID(test)</th>
           <th>商品名</th>
           <th>単価（税込）</th>
           <th>数量</th>
           <th>小計</th>
           <th>製作ステータス</th>
         </tr>
-      </thead></br>
+      </thead>
       <tbody>
       <% @order_products.each do |order_product| %>
         <tr>
+          <td>order_product.id:<%= order_product.id %></td>
           <td><%= order_product.product.name %></td>
           <td><%= (order_product.product.tax_out_price).to_i * 1.1 %></td>
           <td><%= order_product.quantity %></td>
           <td><%= (order_product.product.tax_out_price).to_i * 1.1 * (order_product.quantity).to_i %></td>
+          <td>保存確認：<%= order_product.status %></td>
           <td>
-          <%= form_with model:@order, url: admin_order_path, local: true do |f| %>
-            <%= f.collection_select :status, OrderProduct.all, :id, :status %>
+          <%= form_with model: order_product, url: order_creates_path(id: order_product.id), method: :patch, local: true do |f| %>
+            <%= f.select :status, options_for_select(OrderProduct.statuses.keys, selected: order_product.status)%>
             <%= f.submit "更新" %>
           <% end %>
           </td>
         </tr>
+        <% end %>
       </tbody>
     </table>
-    <% end %>
   </div>
   <div class="row">
     <div class="table">
