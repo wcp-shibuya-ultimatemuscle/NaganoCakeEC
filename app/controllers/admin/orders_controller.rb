@@ -18,8 +18,8 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_products = OrderProduct.where(order_id: @order.id)
-    @a = 0
-    @b = 0
+    @syoukei = 0
+    @goukei = 0
   end
 
   private
