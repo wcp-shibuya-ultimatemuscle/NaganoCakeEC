@@ -54,7 +54,7 @@
           <td>order_product.id:<%= order_product.id %></td>
           <td><%= order_product.product.name %></td>
           <td><%= (order_product.product.tax_out_price).to_i * 1.1 %></td>
-          <td><%= order_product.quantity %></td>
+          <td><%= order_product.quantity %><% @a = order_product.quantity %><% @b = @b + @a %></td>
           <td><%= (order_product.product.tax_out_price).to_i * 1.1 * (order_product.quantity).to_i %></td>
           <td>保存確認：<%= order_product.status %></td>
           <td>
@@ -68,6 +68,7 @@
       </tbody>
     </table>
   </div>
+  <h1>合計<%= @b %></h1>
   <div class="row">
     <div class="table">
       <tr><th>商品合計</th><td><%#= (@order.sum).to_i - (@order.shipping).to_i %></td></tr></br>
