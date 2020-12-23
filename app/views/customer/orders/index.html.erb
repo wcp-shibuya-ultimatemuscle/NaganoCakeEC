@@ -25,7 +25,7 @@
             </td>
             <td><%= (order.sum).to_i + (order.shipping).to_i %></td>
             <td><%= order.status %></td>
-            <td><%= link_to "表示する", order_path(1) %></td>
+            <td><%= link_to "表示する", order_path(order.id) %></td>
           </tr>
         <% end %>
         </tbody>

@@ -8,6 +8,8 @@ class Customer::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_products = OrderProduct.where(order_id: @order.id)
   end
 
   def new
