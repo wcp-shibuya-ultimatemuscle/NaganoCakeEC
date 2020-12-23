@@ -4,8 +4,9 @@ class Customer::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
-
+    @order = Order.where(customer_id: current_customer.id)
+    @subtotal = 0
+    @total = 0
   end
 
   def show
