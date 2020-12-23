@@ -16,6 +16,7 @@
         <tbody>
         <% @order.each do |order| %>
           <tr>
+<<<<<<< HEAD
             <td><%= order.created_at %></td>
             <td><%= order.postal_code %><%= order.address %><%= order.name %></td>
             <td><%#= order.order_product %></td>
@@ -24,6 +25,14 @@
             <td><%= ((order.shipping).to_i + (@total).to_i).round %></td>
             <td><%= order.status %></td>
             <td><%= link_to "表示する", order_path(1) %></td>
+=======
+            <td><%#= order.created_at %></td>
+            <td><%#= order.postal_code %><%#= order.address %><%#= order.name %></td>
+            <td><%#= order.order_product %></td>
+            <td><%#= order.sum %></td>
+            <td><%#= order.status %></td>
+            <td><%#= link_to "表示する", order_path(1) %></td>
+>>>>>>> origin/develop
           </tr>
         <% end %>
         </tbody>

@@ -22,8 +22,16 @@ class Customer::OrdersController < ApplicationController
     @order = Order.new(orders_params)
     @order.customer_id = current_customer.id
     @order.save
-    cart = Cart.where(customer_id: current_customer.id)
-    cart.destroy_all
+    carts = Cart.where(customer_id: current_customer.id)
+    carts.each do |cart|
+      order_product = OrderProduct.new(order_product_params)
+      order_product.product_id = cart.product_id
+      order_product.order_id = @order.id
+      order_product.quantity = cart.quantity
+      order_product.tax_in_price = cart.product.tax_out_price.to_i * 1.1
+      order_product.save
+    end
+    carts.destroy_all
     redirect_to orders_thanks_path
   end
 
@@ -62,6 +70,10 @@ class Customer::OrdersController < ApplicationController
 
   def receiver_params
     params.require(:receiver).permit(:postal_code, :address, :name)
+  end
+
+  def order_product_params
+    params.permit(:product_id, :order_id, :quantity, :tax_in_price, :status)
   end
 
 end
