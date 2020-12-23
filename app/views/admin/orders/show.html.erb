@@ -16,7 +16,7 @@
         </tr>
         <tr>
           <td>
-            <%= link_to admin_customer_path do %>
+            <%= link_to admin_customer_path(@order.customer.id) do %>
               <%= @order.customer.family_name %>　<%= @order.customer.first_name %>
             <% end %>
           </td>
@@ -53,8 +53,7 @@
               <td><%= order_product.product.name %></td>
               <td><%= ((order_product.product.tax_out_price).to_i * 1.1).round %></td>
               <td><%= order_product.quantity %></td>
-              <td><%= @syoukei = ((order_product.product.tax_out_price).to_i * 1.1 * (order_product.quantity).to_i).round %></td>
-              <td><% @goukei = @goukei + @syoukei %></td>
+              <td><%= ((order_product.product.tax_out_price).to_i * 1.1 * (order_product.quantity).to_i).round %></td>
               <td>保存確認：<%= order_product.status %></td>
               <td>
                 <%= form_with model: order_product, url: order_creates_path(id: order_product.id), method: :patch, local: true do |f| %>
@@ -72,7 +71,7 @@
         <tbody>
           <tr>
             <td>商品合計：</td>
-            <td><%= @goukei  %>円</td>
+            <td><%= @order.sum %>円</td>
           </tr>
           <tr>
             <td>送料：</td>
@@ -80,7 +79,7 @@
           </tr>
           <tr>
             <td>請求額合計：</td>
-            <td><%= @goukei + @order.shipping %>円</td>
+            <td><%= @order.sum + @order.shipping %>円</td>
           </tr>
         </tbody>
       </table>
