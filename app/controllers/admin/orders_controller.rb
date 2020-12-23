@@ -5,7 +5,15 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    case params[:order_type]
+    when "today"
+      @orders = Order.where(created_at: Time.current.all_day)
+    when "customer"
+      @customer = Customer.find(params[:format])
+      @orders = @customer.orders
+    else
+      @orders = Order.all
+    end
   end
 
   def update
