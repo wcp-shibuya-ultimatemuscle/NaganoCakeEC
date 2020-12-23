@@ -1,11 +1,19 @@
 class Admin::OrdersController < ApplicationController
 
   def top
-    @todayorder = Order.where(created_at: Time.now.all_day) #本日作成したOrderを代入
+    @todayorder = Order.where(created_at: Time.current.all_day) #本日作成したOrderを代入
   end
 
   def index
-    @orders = Order.all
+    case params[:order_type]
+    when "today"
+      @orders = Order.where(created_at: Time.current.all_day)
+    when "customer"
+      @customer = Customer.find(params[:format])
+      @orders = @customer.orders
+    else
+      @orders = Order.all
+    end
   end
 
   def update
