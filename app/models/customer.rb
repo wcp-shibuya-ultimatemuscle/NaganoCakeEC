@@ -11,6 +11,14 @@ class Customer < ApplicationRecord
 
   enum is_deleted: { 有効: false, 退会済: true }
 
+  validates :family_name, :first_name, presence: true, length: { maximum: 8 }, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :family_kana, :first_kana, presence: true, length: { maximum: 10 }, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :address, presence: true, length: { maximum: 80 }
+  validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
+  validates :tel, presence: true, format: { with: /\A\d{10,11}\z/ }
+  validates :password_confirmation, presence: true
+
+
   def active_for_authentication?
     super && (self.is_deleted == "有効")
   end
