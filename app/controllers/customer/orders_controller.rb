@@ -5,8 +5,6 @@ class Customer::OrdersController < ApplicationController
 
   def index
     @order = Order.where(customer_id: current_customer.id)
-    @subtotal = 0
-    @total = 0
   end
 
   def show
