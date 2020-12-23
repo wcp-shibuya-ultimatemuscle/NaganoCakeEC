@@ -8,4 +8,6 @@ class Genre < ApplicationRecord
     有効: true
   }
 
+  validates :type, presence: true
+
 end

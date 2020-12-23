@@ -11,9 +11,6 @@ class Product < ApplicationRecord
   validates :body, length: { maximum: 200 }
   validates :tax_out_price, presence: true
 
-  #validates :type, inclusion: { in: selectBoxOptions("type") }
-  #validates :status, inclusion: { in: [0,1] }
-
   enum status: {
     販売中: 0,
     売切れ: 1
