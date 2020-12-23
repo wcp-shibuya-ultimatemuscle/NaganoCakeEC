@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container background-color: #FFFFAA ">
 
  <div class="row">
-  <div class="col-md-5">
+  <div class="border col-md-3">
    <!--ジャンル検索の部分テンプレート-->
    <%= render 'customer/products/genre', genres: @genres %>
   </div>
 
-  <div class="col-md-7">
+  <div class="col-md-9">
     <% if params[:id] %>
      <h2><%= @genre.type %>一覧(全<%= @product.count %>件)</h2>
     <% else %>
@@ -31,6 +31,7 @@
      <p><%= product.tax_out_price %>円</p>
     </div>
    <% end %>
+   <%= paginate @products %>
   </div>
- <%= paginate @products %>
+
  </div>
