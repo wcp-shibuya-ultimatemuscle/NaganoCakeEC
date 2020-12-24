@@ -2,27 +2,35 @@
   <div class="container">
 
     <div class="row">
-      <h1>配送先登録/一覧</h1>
+      <div class="col-md-5">
+        <h3 class="text-center bg-light"><strong>配送先登録/一覧</strong></h3>
+      </div>
     </div>
 
-    <div class="row">
+    <div class="row make">
       <%= form_with model: @receiver, url: receivers_path, local: true do |f| %>
-      <div class="col-md-12">
-        <table class="table">
+      <div class="col-12">
+        <table class="table table-borderless">
           <tr>
-            <td>郵便番号(ハイフンなし)</td>
+            <th>郵便番号(ハイフンなし)</th>
             <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td></td>
             <td>
-              <% if @receiver.errors.any? %>
-                <% @receiver.errors.full_messages_for(:postal_code).each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
+            <% if @receiver.errors.any? %>
+              <% @receiver.errors.full_messages_for(:postal_code).each do |message| %>
+                <li><%= message %></li>
               <% end %>
+            <% end %>
             </td>
           </tr>
           <tr>
-            <td>住所</td>
+            <th>住所</th>
             <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <td></td>
             <td>
               <% if @receiver.errors.any? %>
                 <% @receiver.errors.full_messages_for(:address).each do |message| %>
@@ -32,8 +40,11 @@
             </td>
           </tr>
           <tr>
-            <td>宛名</td>
+            <th>宛名</th>
             <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td></td>
             <td>
               <% if @receiver.errors.any? %>
                 <% @receiver.errors.full_messages_for(:name).each do |message| %>
@@ -41,35 +52,47 @@
                 <% end %>
               <% end %>
             </td>
+            <td><%= f.submit "登録する", class:"btn btn-success" %></td>
           </tr>
         </table>
-        <div class="col-md-3">
-          <%= f.submit "登録する" %>
-        </div>
       </div>
       <% end %>
     </div>
-    <table class ="table">
-      <thead>
-        <tr>
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>宛名</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @receivers.each do |receiver| %>
-        <tr>
-          <td><%= receiver.postal_code %></td>
-          <td><%= receiver.address %></td>
-          <td><%= receiver.name %></td>
-          <td><%=link_to "編集する", edit_receiver_path(receiver.id), class:"btn btn-primary" %><%=link_to "削除する", receiver_path(receiver.id), method: :delete, class:"btn btn-danger" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="row">
-      <div class="btn"><%=link_to "マイページに戻る", customer_path(current_customer.id) %></div>
+
+
+    <div class="row make">
+      <div class ="col-10">
+        <table class ="table table-bordered">
+          <thead class="bg-light">
+            <tr>
+              <th>郵便番号</th>
+              <th>住所</th>
+              <th>宛名</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @receivers.each do |receiver| %>
+            <tr>
+              <td><%= receiver.postal_code %></td>
+              <td><%= receiver.address %></td>
+              <td><%= receiver.name %></td>
+              <td>
+                <%=link_to "編集する", edit_receiver_path(receiver.id), class:"btn btn-primary" %>
+                &ensp;
+                <%=link_to "削除する", receiver_path(receiver.id), method: :delete, class:"btn btn-danger" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row make">
+      <div class="col-10 text-center">
+        <%=link_to "マイページに戻る", customer_path(current_customer.id), class:"btn btn-light"%>
+      </div>
     </div>
 
   </div>

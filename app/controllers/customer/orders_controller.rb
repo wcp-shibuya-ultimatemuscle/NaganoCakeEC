@@ -23,20 +23,29 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(orders_params)
-    @order.customer_id = current_customer.id
-    @order.save
-    carts = Cart.where(customer_id: current_customer.id)
-    carts.each do |cart|
-      order_product = OrderProduct.new(order_product_params)
-      order_product.product_id = cart.product_id
-      order_product.order_id = @order.id
-      order_product.quantity = cart.quantity
-      order_product.tax_in_price = cart.product.tax_out_price.to_i * 1.1
-      order_product.save
+    if Cart.where(customer_id: current_customer.id).count != 0
+      @order = Order.new(orders_params)
+      @order.customer_id = current_customer.id
+      if @order.save
+        carts = Cart.where(customer_id: current_customer.id)
+        carts.each do |cart|
+          order_product = OrderProduct.new(order_product_params)
+          order_product.product_id = cart.product_id
+          order_product.order_id = @order.id
+          order_product.quantity = cart.quantity
+          order_product.tax_in_price = cart.product.tax_out_price.to_i * 1.1
+          order_product.save
+        end
+        carts.destroy_all
+        redirect_to orders_thanks_path
+      else
+        @customer = current_customer
+        @receiver = current_customer
+        render :new
+      end
+    else
+      redirect_to root_path
     end
-    carts.destroy_all
-    redirect_to orders_thanks_path
   end
 
   def confirm
@@ -58,12 +67,19 @@ class Customer::OrdersController < ApplicationController
       @order.name = @receiver.name
       # 新しいお届け先なら
     elsif params[:select_name] == "2"
-      @receiver = Receiver.new(receiver_params)
-      @receiver.customer_id = current_customer.id
-      @receiver.save
-      @order.address = @receiver.address
-      @order.postal_code = @receiver.postal_code
-      @order.name = @receiver.name
+      if params[:receiver][:postal_code].blank? || params[:receiver][:address].blank? || params[:receiver][:name].blank?
+        @order = Order.new(orders_params)
+        @customer = current_customer
+        @receiver = current_customer
+        render :new
+      else
+        @receiver = Receiver.new(receiver_params)
+        @receiver.customer_id = current_customer.id
+        @receiver.save
+        @order.address = @receiver.address
+        @order.postal_code = @receiver.postal_code
+        @order.name = @receiver.name
+      end
     end
   end
 
