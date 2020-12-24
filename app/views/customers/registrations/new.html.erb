@@ -1,3 +1,4 @@
+<%= render "customers/shared/error_messages", resource: resource %>
 <div class="container">
   <br>
   <div class="row">
@@ -12,7 +13,7 @@
         <tbody>
           <tr>
             <th>名前</th>
-            <td><%= f.label :family_name, "(姓)" %></td>
+            <td>(姓)</td>
             <td><%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %></td>
             <td></td>
             <td>(名)</td>
