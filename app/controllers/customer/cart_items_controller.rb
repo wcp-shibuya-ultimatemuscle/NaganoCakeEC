@@ -20,7 +20,6 @@ class Customer::CartItemsController < ApplicationController
       @cart.save
     end
     redirect_to cart_items_path(current_customer.id)
-    products_path
   end
 
   def update
