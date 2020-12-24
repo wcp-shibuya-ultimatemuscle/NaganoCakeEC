@@ -1,4 +1,3 @@
-<%= render "customers/shared/error_messages", resource: resource %>
 <div class="container">
   <br>
   <div class="row">
@@ -14,23 +13,42 @@
           <tr>
             <th>名前</th>
             <td>(姓)</td>
-            <td><%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %></td>
+            <td><%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(2) %>
+              <br><%= resource.errors.full_messages.slice(3) %>
+            <% end %></td>
             <td></td>
             <td>(名)</td>
-            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(4) %>
+              <br><%= resource.errors.full_messages.slice(5) %>
+            <% end %></td>
           </tr>
           <tr>
             <th>フリガナ</th>
             <td>(セイ)</td>
-            <td><%= f.text_field :family_kana, autofocus: true, autocomplete: "family_kana" %></td>
+            <td><%= f.text_field :family_kana, autofocus: true, autocomplete: "family_kana" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(6) %>
+              <br><%= resource.errors.full_messages.slice(7) %>
+            <% end %></td>
             <td></td>
             <td>(メイ)</td>
-            <td><%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %></td>
+            <td><%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(8) %>
+              <br><%= resource.errors.full_messages.slice(9) %>
+            <% end %></td>
           </tr>
           <tr>
             <th>メールアドレス</th>
             <td></td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(0) %>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
@@ -38,7 +56,11 @@
           <tr>
             <th>郵便番号(ハイフンなし)</th>
             <td></td>
-            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(11) %>
+              <br><%= resource.errors.full_messages.slice(12) %>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
@@ -46,12 +68,19 @@
           <tr>
             <th>住所</th>
             <td></td>
-            <td colspan="4"><%= f.text_field :address, autofocus: true, autocomplete: "address", size: "57x30" %></td>
+            <td colspan="4"><%= f.text_field :address, autofocus: true, autocomplete: "address", size: "57x30" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(10) %>
+            <% end %></td>
           </tr>
           <tr>
             <th>電話番号(ハイフンなし)</th>
             <td></td>
-            <td><%= f.text_field :tel, autofocus: true, autocomplete: "tel" %></td>
+            <td><%= f.text_field :tel, autofocus: true, autocomplete: "tel" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(13) %>
+              <br><%= resource.errors.full_messages.slice(14) %>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
@@ -59,7 +88,10 @@
           <tr>
             <th>パスワード(6文字以上)</th>
             <td></td>
-            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+            <td><%= f.password_field :password, autocomplete: "new-password" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(1) %>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
@@ -67,7 +99,10 @@
           <tr>
             <th>パスワード(確認用)</th>
             <td></td>
-            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <% unless resource.errors.full_messages.empty? %>
+              <br><%= resource.errors.full_messages.slice(15) %>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
