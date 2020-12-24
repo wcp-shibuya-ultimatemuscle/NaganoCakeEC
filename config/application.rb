@@ -26,12 +26,11 @@ module Naganocake
       else
         class_name = instance.object.class.name.underscore
         method_name = instance.instance_variable_get(:@method_name)
-        "<div class=\"alert-danger\">#{html_tag}<br>
-          <p class=\"error_field alert-danger errormsg\">
+        "<label class=\"huga\">#{html_tag}</label><br>
+          <span class=\"error_field alert-danger errormsg\">
             #{I18n.t("activerecord.attributes.#{class_name}.#{method_name}")}
             #{instance.error_message.first}
-          </p>
-        </div>".html_safe
+          </span>".html_safe
       end
     end
   end
