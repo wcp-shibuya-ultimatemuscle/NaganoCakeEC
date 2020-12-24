@@ -1,4 +1,3 @@
-<%= render "customers/shared/error_messages", resource: resource %>
 <div class="container">
   <br>
   <div class="row">
@@ -7,38 +6,62 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4.5 mx-auto">
+    <div class="col-12">
     <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
       <table class="table table-borderless">
         <tbody>
           <tr>
             <th>名前</th>
             <td>(姓)</td>
-            <td><%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %></td>
+            <td><%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %>
+            <% resource.errors.messages[:family_name].each do |family_name| %>
+              <section class= "deviseval alert alert-danger">
+                姓<%= family_name %></section>
+            <% end %></td>
             <td></td>
             <td>(名)</td>
-            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            <% resource.errors.messages[:first_name].each do |first_name| %>
+              <section class= "deviseval alert alert-danger">
+                名<%= first_name %></section>
+            <% end %></td>
           </tr>
           <tr>
             <th>フリガナ</th>
-            <td>(セイ)</td>
-            <td><%= f.text_field :family_kana, autofocus: true, autocomplete: "family_kana" %></td>
+            <td class="text-nowrap">(セイ)</td>
+            <td><%= f.text_field :family_kana, autofocus: true, autocomplete: "family_kana" %>
+            <% resource.errors.messages[:family_kana].each do |family_kana| %>
+              <section class= "deviseval alert alert-danger text-nowrap">
+                (セイ)<%= family_kana %></section>
+            <% end %></td>
             <td></td>
-            <td>(メイ)</td>
-            <td><%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %></td>
+            <td class="text-nowrap">(メイ)</td>
+            <td><%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %>
+            <% resource.errors.messages[:first_kana].each do |first_kana| %>
+              <section class= "deviseval alert alert-danger">
+                (メイ)<%= first_kana %></section>
+            <% end %></td>
           </tr>
           <tr>
             <th>メールアドレス</th>
             <td></td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <% resource.errors.messages[:email].each do |email| %>
+              <section class= "deviseval alert alert-danger">
+                メールアドレス<%= email %></section>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
-            <th>郵便番号(ハイフンなし)</th>
+            <th class="text-nowrap">郵便番号(ハイフンなし)</th>
             <td></td>
-            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+            <% resource.errors.messages[:postal_code].each do |postal_code| %>
+              <section class= "deviseval alert alert-danger">
+                郵便番号<%= postal_code %></section>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
@@ -46,20 +69,33 @@
           <tr>
             <th>住所</th>
             <td></td>
-            <td colspan="4"><%= f.text_field :address, autofocus: true, autocomplete: "address", size: "57x30" %></td>
+            <td colspan="4"><%= f.text_field :address, autofocus: true, autocomplete: "address", size: "57x30" %>
+            <% resource.errors.messages[:address].each do |address| %>
+              <section class= "deviseval alert alert-danger">
+                住所<%= address %></section>
+            <% end %></td>
           </tr>
           <tr>
-            <th>電話番号(ハイフンなし)</th>
+            <th class="text-nowrap">電話番号(ハイフンなし)</th>
             <td></td>
-            <td><%= f.text_field :tel, autofocus: true, autocomplete: "tel" %></td>
+            <td><%= f.text_field :tel, autofocus: true, autocomplete: "tel" %>
+            <% resource.errors.messages[:tel].each do |tel| %>
+              <section class= "deviseval alert alert-danger">
+                電話番号<%= tel %>
+              </section>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
-            <th>パスワード(6文字以上)</th>
+            <th class="text-nowrap">パスワード(6文字以上)</th>
             <td></td>
-            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+            <td><%= f.password_field :password, autocomplete: "new-password" %>
+            <% resource.errors.messages[:password].each do |password| %>
+              <section class= "deviseval alert alert-danger">
+                パスワード<%= password %></section>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
@@ -67,7 +103,11 @@
           <tr>
             <th>パスワード(確認用)</th>
             <td></td>
-            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <% resource.errors.messages[:password_confirmation].each do |password_confirmation| %>
+              <section class= "deviseval alert alert-danger">
+                <br>パスワード(確認用)<%= password_confirmation %></section>
+            <% end %></td>
             <td></td>
             <td></td>
             <td></td>
