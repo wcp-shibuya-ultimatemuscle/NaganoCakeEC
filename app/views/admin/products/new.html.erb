@@ -13,9 +13,8 @@
  <div class="col-md-5">
   <!--商品画像-->
   <div>
-
    <label for="inputImage">Image</label>
-   <%#= attachment_image_tag @product, class: 'image', fallback: "no_image.jpg", id: "img_prev", style: "height: 250px; width:300px;" %><br>
+   <%= attachment_image_tag @product, :image, fallback: "no_image.jpg", id: "img_prev", style: "height: 250px; width:300px;" %><br>
    <%= f.attachment_field :image, placeholder: "商品画像" %>
   </div>
  </div>
@@ -53,6 +52,24 @@
  </div>
 </div>
 <% end %>
+
+<!--画像プレビューのためのjs-->
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('#product_image').change(function(){
+    readURL(this);
+  });
+});
+</script>
 
 </div>
 
