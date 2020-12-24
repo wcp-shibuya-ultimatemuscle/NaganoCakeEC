@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
 
   def top
     @todayorder = Order.where(created_at: Time.current.all_day) #本日作成したOrderを代入
