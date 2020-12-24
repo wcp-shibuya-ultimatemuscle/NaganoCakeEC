@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-5 mx-auto">
-    <h1>本日の注文件数　　　　　<%= link_to @todayorder.count, admin_orders_path, class: "text-dark" %> 件</h1>
+    <h1>本日の注文件数　　　　　<%= link_to @todayorder.count, admin_orders_path(order_type: "today"), class: "text-dark" %> 件</h1>
     <!-- admin/ordersに遷移する。 ただし、表示する内容はOrder.where(created_at: Time.now.all_day).each do |o|-->
     </div>
   </div>
