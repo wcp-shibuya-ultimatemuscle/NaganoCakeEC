@@ -14,40 +14,46 @@
             <th>名前</th>
             <td>(姓)</td>
             <td><%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(2) %>
-              <br><%= resource.errors.full_messages.slice(3) %>
+            <% resource.errors.messages[:family_name].each do |family_name| %>
+              <p class= "deviseval alert alert-danger">
+                <br>姓<%= family_name %>
+              </p>
             <% end %></td>
             <td></td>
             <td>(名)</td>
             <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(4) %>
-              <br><%= resource.errors.full_messages.slice(5) %>
+            <% resource.errors.messages[:first_name].each do |first_name| %>
+              <p class= "deviseval alert alert-danger">
+                <br>名<%= first_name %>
+              </p>
             <% end %></td>
           </tr>
           <tr>
             <th>フリガナ</th>
             <td>(セイ)</td>
             <td><%= f.text_field :family_kana, autofocus: true, autocomplete: "family_kana" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(6) %>
-              <br><%= resource.errors.full_messages.slice(7) %>
+            <% resource.errors.messages[:family_kana].each do |family_kana| %>
+              <p class= "deviseval alert alert-danger">
+                <br>(セイ)<%= family_kana %>
+              </p>
             <% end %></td>
             <td></td>
             <td>(メイ)</td>
             <td><%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(8) %>
-              <br><%= resource.errors.full_messages.slice(9) %>
+            <% resource.errors.messages[:first_kana].each do |first_kana| %>
+              <p class= "deviseval alert alert-danger">
+                <br>(メイ)<%= first_kana %>
+              </p>
             <% end %></td>
           </tr>
           <tr>
             <th>メールアドレス</th>
             <td></td>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(0) %>
+            <% resource.errors.messages[:email].each do |email| %>
+              <p class= "deviseval alert alert-danger">
+                <br>メールアドレス<%= email %>
+              </p>
             <% end %></td>
             <td></td>
             <td></td>
@@ -57,9 +63,10 @@
             <th>郵便番号(ハイフンなし)</th>
             <td></td>
             <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(11) %>
-              <br><%= resource.errors.full_messages.slice(12) %>
+            <% resource.errors.messages[:postal_code].each do |postal_code| %>
+              <p class= "deviseval alert alert-danger">
+                <br>郵便番号<%= postal_code %>
+              </p>
             <% end %></td>
             <td></td>
             <td></td>
@@ -69,17 +76,20 @@
             <th>住所</th>
             <td></td>
             <td colspan="4"><%= f.text_field :address, autofocus: true, autocomplete: "address", size: "57x30" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(10) %>
+            <% resource.errors.messages[:address].each do |address| %>
+              <p class= "deviseval alert alert-danger">
+                <br>住所<%= address %>
+              </p>
             <% end %></td>
           </tr>
           <tr>
             <th>電話番号(ハイフンなし)</th>
             <td></td>
             <td><%= f.text_field :tel, autofocus: true, autocomplete: "tel" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(13) %>
-              <br><%= resource.errors.full_messages.slice(14) %>
+            <% resource.errors.messages[:tel].each do |tel| %>
+              <p class= "deviseval alert alert-danger">
+                <br>電話番号<%= tel %>
+              </p>
             <% end %></td>
             <td></td>
             <td></td>
@@ -89,8 +99,10 @@
             <th>パスワード(6文字以上)</th>
             <td></td>
             <td><%= f.password_field :password, autocomplete: "new-password" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(1) %>
+            <% resource.errors.messages[:password].each do |password| %>
+              <p class= "deviseval alert alert-danger">
+                <br>パスワード<%= password %>
+              </p>
             <% end %></td>
             <td></td>
             <td></td>
@@ -100,8 +112,10 @@
             <th>パスワード(確認用)</th>
             <td></td>
             <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-            <% unless resource.errors.full_messages.empty? %>
-              <br><%= resource.errors.full_messages.slice(15) %>
+            <% resource.errors.messages[:password_confirmation].each do |password_confirmation| %>
+              <p class= "deviseval alert alert-danger">
+                <br>パスワード(確認用)<%= password_confirmation %>
+              </p>
             <% end %></td>
             <td></td>
             <td></td>
