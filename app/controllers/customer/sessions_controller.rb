@@ -36,11 +36,11 @@ class Customer::SessionsController < Devise::SessionsController
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
     if @customer
       if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false)) # active_for_authentication?アクションにより self.is_deleted == "有効"の際実行される
-        flash[:error] = "退会済です。"
+        flash[:danger] = "退会済です。"
         redirect_to new_customer_session_path
       end
     else
-      flash[:error] = "必須項目を入力してください。"
+      flash[:danger] = "必須項目を入力してください。"
     end
   end
 end
