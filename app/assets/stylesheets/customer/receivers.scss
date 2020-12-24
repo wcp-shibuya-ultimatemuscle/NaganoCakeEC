@@ -3,17 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #receiver_postal_code{
   width: 100px;
-  height: 30px;
 }
 
 #receiver_address{
-  width: 500px;
-  height: 30px;
+  width: 470px;
 }
 
 #receiver_name{
-  width: 200px;
-  height: 30px;
+  width: 470px;
 }
 
 li{
@@ -25,4 +22,8 @@ main{
 }
 .make{
   margin-top: 40px;
+}
+
+.title{
+  width: 100px;
 }
