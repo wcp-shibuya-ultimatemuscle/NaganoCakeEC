@@ -16,7 +16,7 @@
         <tbody>
         <% @order.each do |order| %>
           <tr>
-            <td><%= order.created_at %></td>
+            <td><%= order.created_at.to_s(:datetime_jp) %></td>
             <td><%= order.postal_code %><%= order.address %><%= order.name %></td>
             <td>
               <% order.order_products.each do |order_product| %>
@@ -25,7 +25,7 @@
             </td>
             <td><%= (order.sum).to_i + (order.shipping).to_i %></td>
             <td><%= order.status %></td>
-            <td><%= link_to "表示する", order_path(1) %></td>
+            <td><%= link_to "表示する", order_path(order.id) %></td>
           </tr>
         <% end %>
         </tbody>
