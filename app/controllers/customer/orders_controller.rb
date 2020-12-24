@@ -14,9 +14,12 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
-    @customer = current_customer
-    @receiver = current_customer
+    if Cart.find_by(customer_id: current_customer.id) == nil
+      redirect_to cart_items_path
+    end
+      @order = Order.new
+      @customer = current_customer
+      @receiver = current_customer
   end
 
   def create
