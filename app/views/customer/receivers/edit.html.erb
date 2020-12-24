@@ -1,28 +1,35 @@
 <main>
-  <div class ="container">
-
+  <div class="container">
     <div class="row">
-      <h1>配送先編集</h1>
+      <div class="col-md-5">
+        <h3 class="text-center bg-light"><strong>配送先編集</strong></h3>
+      </div>
     </div>
 
-    <div class="row">
+    <div class="row make">
       <%= form_with model: @receiver, url: receiver_path, local: true do |f| %>
-      <div class="col-md-12">
-        <table class="table">
+      <div class="col-12">
+        <table class="table table-borderless">
           <tr>
-            <td>郵便番号(ハイフンなし)</td>
+            <th>郵便番号(ハイフンなし)</th>
             <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td></td>
             <td>
-              <% if @receiver.errors.any? %>
-                <% @receiver.errors.full_messages_for(:postal_code).each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
+            <% if @receiver.errors.any? %>
+              <% @receiver.errors.full_messages_for(:postal_code).each do |message| %>
+                <li><%= message %></li>
               <% end %>
+            <% end %>
             </td>
           </tr>
           <tr>
-            <td>住所</td>
+            <th>住所</th>
             <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <td></td>
             <td>
               <% if @receiver.errors.any? %>
                 <% @receiver.errors.full_messages_for(:address).each do |message| %>
@@ -32,8 +39,11 @@
             </td>
           </tr>
           <tr>
-            <td>宛名</td>
+            <th>宛名</th>
             <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td></td>
             <td>
               <% if @receiver.errors.any? %>
                 <% @receiver.errors.full_messages_for(:name).each do |message| %>
@@ -41,18 +51,17 @@
                 <% end %>
               <% end %>
             </td>
+            <td><%= f.submit "編集を保存する", class:"btn btn-primary" %></td>
           </tr>
         </table>
-        <div class="col-md-3">
-          <%= f.submit "編集する" %>
-        </div>
       </div>
       <% end %>
     </div>
-    <div class="row">
-      <div class="btn"><%=link_to "配送先に戻る", receivers_path %></div>
-    </div>
 
+    <div class="row make">
+      <div class="col-10 text-center">
+        <%=link_to "配送先一覧に戻る", receivers_path, class:"btn btn-light" %>
+      </div>
+    </div>
   </div>
 </main>
-

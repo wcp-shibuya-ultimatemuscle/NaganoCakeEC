@@ -13,7 +13,9 @@
  <div class="col-md-5">
   <!--商品画像-->
   <div>
+
    <label for="inputImage">Image</label>
+   <%#= attachment_image_tag @product, class: 'image', fallback: "no_image.jpg", id: "img_prev", style: "height: 250px; width:300px;" %><br>
    <%= f.attachment_field :image, placeholder: "商品画像" %>
   </div>
  </div>
@@ -53,3 +55,5 @@
 <% end %>
 
 </div>
+
+
