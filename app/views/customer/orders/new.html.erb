@@ -6,22 +6,35 @@
 <% end %>
 
 <!--注文情報入力フォーム-->
-<%= form_with model: @order, url: orders_confirm_path, method: :get, local: true do |f| %>
-  <h4>支払方法</h4>
-  <label><%= f.radio_button :payment, "銀行振込", :checked => true %>銀行振込</label>
-  <label><%= f.radio_button :payment, "クレジットカード" %>クレジットカード</label></br>
-
-  <h4>お届け先</h4>
-  <!--ご自身の住所-->
-  <label><%= radio_button_tag("select_name", 0, [:checked => true]) %>ご自身の住所</label>
-    <%= f.label @customer.address %></br>
-  <!--登録済み住所から選択-->
-  <label><%= radio_button_tag("select_name", 1) %>登録済み住所から選択</label></br>
-    <%= f.collection_select :receiver_id, current_customer.receivers, :id, :address, include_blank: '選択してください'%></br>
-  <!--新しいお届け先-->
-  <label><%= radio_button_tag("select_name", 2) %>新しいお届け先</label>
-    <p>郵便番号（ハイフンなし）<%= text_field_tag 'receiver[postal_code]' %></p>
-    <p>住所<%= text_field_tag 'receiver[address]' %></p>
-    <p>宛名<%= text_field_tag 'receiver[name]' %></p>
-  <%= f.submit "確認画面へ進む" %>
-<% end %>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+      <%= form_with model: @order, url: orders_confirm_path, method: :get, local: true do |f| %>
+        <h4>支払方法</h4>
+        <ul>
+          <li><label><%= f.radio_button :payment, "銀行振込", :checked => true %>銀行振込</label></li>
+          <li><label><%= f.radio_button :payment, "クレジットカード" %>クレジットカード</label></li>
+        </ul>
+        <h4>お届け先</h4>
+        <!--ご自身の住所-->
+        <ul>
+          <li><label><%= radio_button_tag("select_name", 0, [:checked => true]) %>ご自身の住所</label></li>
+            <%= f.label @customer.address %></br>
+          <!--登録済み住所から選択-->
+          <li><label><%= radio_button_tag("select_name", 1) %>登録済み住所から選択</label></li>
+            <%= f.collection_select :receiver_id, current_customer.receivers, :id, :address, include_blank: '選択してください'%>
+          <!--新しいお届け先-->
+          <li><label><%= radio_button_tag("select_name", 2) %>新しいお届け先</label></li>
+            <ul>
+              <li><p>郵便番号（ハイフンなし）<%= text_field_tag 'receiver[postal_code]' %></p></li>
+              <li><p>住所 <%= text_field_tag 'receiver[address]' %></p></li>
+              <li><p>宛名 <%= text_field_tag 'receiver[name]' %></p></li>
+            </ul>
+          <%= f.submit "確認画面へ進む", class:'btn btn-primary' %>
+        </ul>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</main>
