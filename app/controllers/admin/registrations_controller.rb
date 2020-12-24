@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Admin::RegistrationsController < Devise::RegistrationsController
+  before_action :authenticate_admin!
+  before_action :require_login
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -55,6 +58,11 @@ class Admin::RegistrationsController < Devise::RegistrationsController
      admin_orders_top_path
    end
 
+  def require_login
+   unless admin_signed_in?
+    redirect_to root_path # halts request cycle
+   end
+  end
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
