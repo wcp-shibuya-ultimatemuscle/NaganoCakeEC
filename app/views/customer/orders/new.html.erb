@@ -1,12 +1,19 @@
+<% if @order.errors.any? %>
+  <%= @order.errors.count %>件のエラーが発生しました
+  <% @order.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <!--注文情報入力フォーム-->
 <%= form_with model: @order, url: orders_confirm_path, method: :get, local: true do |f| %>
   <h4>支払方法</h4>
-  <label><%= f.radio_button :payment, "銀行振込" %>銀行振込</label>
+  <label><%= f.radio_button :payment, "銀行振込", :checkd => true %>銀行振込</label>
   <label><%= f.radio_button :payment, "クレジットカード" %>クレジットカード</label></br>
 
   <h4>お届け先</h4>
   <!--ご自身の住所-->
-  <label><%= radio_button_tag("select_name", 0) %>ご自身の住所</label>
+  <label><%= radio_button_tag("select_name", 0, :checkd => true) %>ご自身の住所</label>
     <%= f.label @customer.address %></br>
   <!--登録済み住所から選択-->
   <label><%= radio_button_tag("select_name", 1) %>登録済み住所から選択</label></br>
