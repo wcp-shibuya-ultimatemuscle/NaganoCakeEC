@@ -70,7 +70,7 @@ class Customer::OrdersController < ApplicationController
       if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
         @order = Order.new(orders_params)
         @customer = current_customer
-        @receiver = current_customer
+        flash[:error] = "空欄があります"
         render :new
       else
         @order = Order.new(orders_params)
