@@ -14,7 +14,7 @@
     <div class="item">
      <% @products.each do |product| %>
      <div class="card-deck">
-      <div class="card">
+      <div class="mt-2 mr-4 card border-warning">
        <div>
         <!--商品画像-->
         <%= attachment_image_tag product, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg", class: "" %><br>
@@ -31,7 +31,7 @@
      </div>
      <% end %>
     </div>
-   <%= paginate @products %>
+   <h4><%= paginate @products %></h4>
   </div>
 
  </div>
