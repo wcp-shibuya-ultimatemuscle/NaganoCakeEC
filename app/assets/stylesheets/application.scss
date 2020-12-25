@@ -38,10 +38,13 @@
     color: #fff;
 }
 
+#errormsg {
+    font-size: 0.8rem;
+}
 
-.field_with_errors {
+.formcolor {
     padding: 2px;
-    background-color: red;
+    background-color: pink;
 }
 
 .deviseval {

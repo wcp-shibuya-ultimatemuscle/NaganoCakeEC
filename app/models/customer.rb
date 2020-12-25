@@ -16,7 +16,6 @@ class Customer < ApplicationRecord
   validates :address, presence: true, length: { maximum: 80 }
   validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
   validates :tel, presence: true, format: { with: /\A\d{10,11}\z/ }
-  validates :password_confirmation, presence: true
 
 
   def active_for_authentication?

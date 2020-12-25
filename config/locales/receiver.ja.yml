@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        receiver:
+          attributes:
+            postal_code:
+              blank: "が空白です。"
+    attributes:
+      receiver:
+        postal_code: "郵便番号"
