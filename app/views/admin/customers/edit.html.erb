@@ -8,9 +8,9 @@
     </div>
 
     <div class="row make">
-      <div class ="col-10">
-        <table class ="table table-borderless">
-          <%= form_with model: @customer, url: admin_customer_path(@customer.id), local: true do |f| %>
+      <%= form_with model: @customer, url: admin_customer_path(@customer.id), local: true do |f| %>
+        <div class ="col-10">
+          <table class ="table table-borderless">
             <tr>
               <th class="www">会員ID</th>
               <td><%= @customer.id %></td>
@@ -51,9 +51,9 @@
               <td><%= f.submit "変更を保存する", class:"btn btn-primary" %></td>
               <td><%= link_to "詳細画面に戻る", admin_customer_path(@customer.id), class:"btn btn-light" %></td>
             </tr>
-          <% end %>
-        </table>
-      </div>
+          </table>
+        </div>
+      <% end %>
     </div>
 
   </div>
