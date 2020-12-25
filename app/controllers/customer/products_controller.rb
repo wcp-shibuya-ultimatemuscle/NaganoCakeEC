@@ -1,5 +1,5 @@
 class Customer::ProductsController < ApplicationController
-  before_action :authenticate_customer!, except: [:index]
+  before_action :authenticate_customer!, except: [:index, :show]
 
   def index
     @genres = Genre.where(is_active: "有効")
