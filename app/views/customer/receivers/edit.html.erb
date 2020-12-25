@@ -15,28 +15,8 @@
             <td><%= f.text_field :postal_code %></td>
           </tr>
           <tr>
-            <td></td>
-            <td>
-            <% if @receiver.errors.any? %>
-              <% @receiver.errors.full_messages_for(:postal_code).each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            <% end %>
-            </td>
-          </tr>
-          <tr>
             <th>住所</th>
             <td><%= f.text_field :address %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <% if @receiver.errors.any? %>
-                <% @receiver.errors.full_messages_for(:address).each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              <% end %>
-            </td>
           </tr>
           <tr>
             <th>宛名</th>
@@ -44,13 +24,7 @@
           </tr>
           <tr>
             <td></td>
-            <td>
-              <% if @receiver.errors.any? %>
-                <% @receiver.errors.full_messages_for(:name).each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              <% end %>
-            </td>
+            <td></td>
             <td><%= f.submit "編集を保存する", class:"btn btn-primary" %></td>
           </tr>
         </table>

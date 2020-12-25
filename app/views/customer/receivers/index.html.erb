@@ -15,43 +15,19 @@
             <th>郵便番号(ハイフンなし)</th>
             <td><%= f.text_field :postal_code %></td>
           </tr>
-          <tr>
-            <td></td>
-            <td>
-            <% if @receiver.errors.any? %>
-              <% @receiver.errors.full_messages_for(:postal_code).each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            <% end %>
-            </td>
-          </tr>
+
           <tr>
             <th>住所</th>
             <td><%= f.text_field :address %></td>
           </tr>
-          <tr>
-            <td></td>
-            <td>
-              <% if @receiver.errors.any? %>
-                <% @receiver.errors.full_messages_for(:address).each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
+
           <tr>
             <th>宛名</th>
             <td><%= f.text_field :name %></td>
           </tr>
           <tr>
             <td></td>
-            <td>
-              <% if @receiver.errors.any? %>
-                <% @receiver.errors.full_messages_for(:name).each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              <% end %>
-            </td>
+            <td></td>
             <td><%= f.submit "登録する", class:"btn btn-success" %></td>
           </tr>
         </table>
@@ -77,10 +53,10 @@
               <td><%= receiver.postal_code %></td>
               <td><%= receiver.address %></td>
               <td><%= receiver.name %></td>
-              <td>
-                <%=link_to "編集する", edit_receiver_path(receiver.id), class:"btn btn-primary" %>
+              <td class="xxx">
+                <%=link_to "編集する", edit_receiver_path(receiver.id), class:"btn btn-primary btn-sm" %>
                 &ensp;
-                <%=link_to "削除する", receiver_path(receiver.id), method: :delete, class:"btn btn-danger" %>
+                <%=link_to "削除する", receiver_path(receiver.id), method: :delete, class:"btn btn-danger btn-sm" %>
               </td>
             </tr>
             <% end %>
