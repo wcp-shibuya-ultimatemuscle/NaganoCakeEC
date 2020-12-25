@@ -1,19 +1,28 @@
-<!--ジャンル検索の部分テンプレート-->
-<%= render 'customer/products/genre', genres: @genres %>
-<br>
-
-<!--商品詳細-->
-<%= attachment_image_tag @product, :image, size: "30x30", format: 'jpg', fallback: "no_image.jpg" %>
- <!--商品名-->
-  <h3><%= @product.name %></h3>
- <!--税抜価格-->
- <label for="inputTaxoutprice">税抜価格</label>
- <p><%= @product.tax_out_price %>円</p>
-
- <!--個数選択-->
-<%= form_with model: @cart, url: cart_items_path(id: @product.id), local:true do |f| %>
- <label>数量</label>
- <%= f.number_field :quantity, min: 1, value: 1, include_blank: '選択してください' %>
- <%= f.submit "カートに入れる" %>
-<% end %>
-
+<div class="container">
+ <div class="row">
+  <div class="border col-md-3 ">
+   <!--ジャンル検索の部分テンプレート-->
+   <%= render 'customer/products/genre', genres: @genres %>
+  </div>
+  <!--以下、商品詳細-->
+  <div class="col-md-6">
+   <!--商品詳細-->
+   <%= attachment_image_tag @product, :image, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+   </div>
+   <div class="product col-md-3">
+   <!--商品名-->
+   <h3><%= @product.name %></h3>
+   <!--商品説明-->
+   <h4><%= @product.body %></h4>
+   <!--税抜価格-->
+   <label for="inputTaxoutprice"></label>
+   <p>￥<%= ((@product.tax_out_price).to_i * 1.1).round %>(税込)</p>
+   <!--個数選択-->
+   <%= form_with model: @cart, url: cart_items_path(id: @product.id), local:true do |f| %>
+    <label>数量</label>
+    <%= f.number_field :quantity, min: 1, value: 1, include_blank: '選択してください' %>
+    <%= f.submit "カートに入れる" %>
+   <% end %>
+   </div>
+ </div>
+</div>
