@@ -1,15 +1,24 @@
 <main>
   <div class="container">
     <div class="row">
+      <div class="col-5">
+        <h3 class="text-center bg-light"><strong>ショッピングカート</strong></h3>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-3">
+        <%= link_to "カートを空にする", destroy_all_path(id: current_customer.id), method: :delete, class:'btn btn-danger' %>
+      </div>
+    </div>
+    <div class="row make">
       <div class="col-12">
         <table class = "table table-bordered">
-          <thead>
+          <thead class="bg-light">
             <tr>
               <th>商品名</th>
               <th>単価（税込）</th>
               <th>数量</th>
               <th>小計</th>
-              <td align="center"><%= link_to "カートを空きにする", destroy_all_path(id: current_customer.id), method: :delete, class:'btn btn-danger' %></td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
@@ -26,7 +35,7 @@
               <td align="right"><%= ((cart.product.tax_out_price).to_i * 1.1 * (cart.quantity).to_i).round %>円</td>
               <% @subtotal = ((cart.product.tax_out_price).to_i * 1.1 * (cart.quantity).to_i).round %>
               <% @total = @total + @subtotal %>
-              <td align="center"><%= link_to "削除する", cart_item_path(cart.id), method: :delete, class:'btn btn-danger' %></td>
+              <td align="center"><%= link_to "削除する", cart_item_path(cart.id), method: :delete, class:'btn btn-danger btn-sm' %></td>
             </tr>
           </tbody>
           <% end %>
