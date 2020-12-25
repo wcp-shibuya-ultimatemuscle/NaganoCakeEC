@@ -27,6 +27,12 @@ class Customer::OrdersController < ApplicationController
       @order = Order.new(orders_params)
       @order.customer_id = current_customer.id
       if @order.save
+        receiver = Receiver.new(receivers_params)
+        receiver.customer_id = current_customer.id
+        receiver.postal_code = @order.postal_code
+        receiver.address = @order.address
+        receiver.name = @order.name
+        receiver.save
         carts = Cart.where(customer_id: current_customer.id)
         carts.each do |cart|
           order_product = OrderProduct.new(order_product_params)
@@ -92,5 +98,11 @@ class Customer::OrdersController < ApplicationController
   def order_product_params
     params.permit(:product_id, :order_id, :quantity, :tax_in_price, :status)
   end
+
+  def receivers_params
+    params.permit(:postal_code, :address, :name)
+  end
+
+
 
 end
