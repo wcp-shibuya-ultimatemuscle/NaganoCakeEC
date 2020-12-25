@@ -1,74 +1,38 @@
 <div class="container">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">以下テスト用</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Admin</th>
-        <td><%= link_to "新規登録", new_admin_registration_path %></td>
-        <td><%= link_to "ログイン", new_admin_session_path %></td>
-        <td><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Customer</th>
-        <td><%= link_to "新規登録", new_customer_registration_path %></td>
-        <td><%= link_to "ログイン", new_customer_session_path %></td>
-        <td><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></td>
-        <td><%= link_to "パスワード変更", edit_customer_registration_path %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<br>
-<br>
-<div class="container">
   <div class="row">
-    <div class="col-sm-1">　</div>
-    <div class="border col-sm-2 align-self-center">
-      <%= render 'customer/products/genre', genres: @genres %>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="col-sm-3">
+      <div class="card bg-success topcardmg shadow">
+        <%= render 'customer/products/genre', genres: @genres %>
+        => ここにジャンル画像をそれぞれ持ってくるのも面白いかも？
+      </div>
     </div>
-    <div class="col-sm-8 align-self-center">
-      <div class="row">
-        <div class="border col-md-7 mx-auto card">
-          <%= image_tag 'cake_ya.png', class: "card-img", alt: '' %>
-            <div class="border col-md-10 mx-auto card-img-overlay">
-              <h5 class="text-center">ようこそ、NaganoCakeへ!<br>
-              このサイトは、ケーキ販売のECサイトになります。<br>
-              会員でない方も商品の閲覧はできますが、<br>
-              購入には会員登録が必要になります。</h5>
-            </div>
+    <div class="col-sm-9">
+      <div class="card bg-dark text-white topcardmg shadow">
+        <div class="card-header">
+          <h4 class="text-center">ようこそ、ながのCAKEへ!</h4>
+        </div>
+        <%= image_tag 'topbg.jpg', class: "bd-placeholder-img bd-placeholder-img-lg card-img", height: "350", alt: '' %>
+        <div class="card-body align-items-center">
+          <p class="card-text text-center">このサイトは、ケーキ販売のECサイトになります。</p>
+          <p class="card-text text-center">会員でない方も商品の閲覧はできますが、</p>
+          <p class="card-text text-center">購入には会員登録が必要になります。</p>
         </div>
       </div>
-      <br><br><br><br><br>
-      <div class="col-md-12"><h2>オススメ商品</h2>
-      <br>
-      <div class="row">
+    </div>
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-sm-9">
+      <div class="card-deck">
         <% @products.each do |product| %>
-         <div class="col-md-3 text-right">
-           <%= attachment_image_tag product, :image, size: "120x120", format: 'jpg', fallback: "no_image.jpg" %>
-         <h3>
-          <%= link_to product_path(product.id) do %>
-            <%= product.name %>
-          <% end %>
-         </h3>
-           <h3><%= product.tax_out_price %>円</h3>
-           <h3>登録:<%= product.created_at.strftime('%m/%d') %></h3>
-         </div>
+          <div class="card shadow rounded-circle bg-warning topcardmg", style="width: 18rem;">
+            <%= attachment_image_tag product, :image, size: "120x100", format: 'jpg', fallback: "no_image.jpg", class: "bd-placeholder-img bd-placeholder-img-lg card-img" %>
+            <h5 class="card-title text-center"><%= link_to product.name, product_path(product.id) %></h5>
+            <p class="card-text text-center"><%= product.tax_out_price %>円</p>
+          </div>
         <% end %>
       </div>
     </div>
-    <div class="col-md-12 text-right"><h2><%= link_to "もっと見る>", products_path %></h2>
-    </div>
   </div>
-  </div>
+  <h4 class="text-right"><%= link_to "もっと見る>", products_path %></h4>
 </div>
+
