@@ -1,31 +1,31 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-between">
     <div class="col-sm-3">
-      <div class="card bg-success topcardmg shadow">
+      <div class="card bg-success topcardmg shadow-lg">
         <%= render 'customer/products/genre', genres: @genres %>
-        => ここにジャンル画像をそれぞれ持ってくるのも面白いかも？
       </div>
     </div>
-    <div class="col-sm-9">
-      <div class="card bg-dark text-white topcardmg shadow">
-        <div class="card-header">
-          <h4 class="text-center">ようこそ、ながのCAKEへ!</h4>
+    <div class="col-sm-8">
+      <div class="card bg-warning text-primary topcardmg shadow-lg rounded-lg">
+        <div class="card-header border-0">
+          <h2 class="text-center">ようこそ、<b>ながのCAKE</b>へ!</h2>
         </div>
-        <%= image_tag 'topbg.jpg', class: "bd-placeholder-img bd-placeholder-img-lg card-img", height: "350", alt: '' %>
+        <%= image_tag 'topbg.jpg', class: "bd-placeholder-img bd-placeholder-img-lg rounded-pill card-img border-0", height: "400", alt: '' %>
         <div class="card-body align-items-center">
-          <p class="card-text text-center">このサイトは、ケーキ販売のECサイトになります。</p>
-          <p class="card-text text-center">会員でない方も商品の閲覧はできますが、</p>
-          <p class="card-text text-center">購入には会員登録が必要になります。</p>
+          <h3 class="card-text text-center">このサイトは、ケーキ販売のECサイトになります。</h3>
+          <h3 class="card-text text-center">会員でない方も商品の閲覧はできますが、</h3>
+          <h3 class="card-text text-center">購入には会員登録が必要になります。</h3>
         </div>
       </div>
     </div>
   </div>
   <div class="row justify-content-end">
     <div class="col-sm-9">
+      <h2>オススメ商品</h2>
       <div class="card-deck">
         <% @products.each do |product| %>
-          <div class="card shadow rounded-circle bg-warning topcardmg", style="width: 18rem;">
-            <%= attachment_image_tag product, :image, size: "120x100", format: 'jpg', fallback: "no_image.jpg", class: "bd-placeholder-img bd-placeholder-img-lg card-img" %>
+          <div class="card shadow-lg rounded-circle bg-warning topcardmg", style="width: 18rem;">
+            <%= attachment_image_tag product, :image, size: "120x100", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle bd-placeholder-img bd-placeholder-img-lg card-img" %>
             <h5 class="card-title text-center"><%= link_to product.name, product_path(product.id) %></h5>
             <p class="card-text text-center"><%= product.tax_out_price %>円</p>
           </div>
@@ -33,6 +33,7 @@
       </div>
     </div>
   </div>
-  <h4 class="text-right"><%= link_to "もっと見る>", products_path %></h4>
+  <br>
+  <h2 class="text-right"><%= link_to "もっと見る>", products_path %></h2>
 </div>
 
