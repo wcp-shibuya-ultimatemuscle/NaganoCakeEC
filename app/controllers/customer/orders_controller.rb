@@ -67,10 +67,16 @@ class Customer::OrdersController < ApplicationController
       @order.name = current_customer.family_name + current_customer.first_name
       # 登録済み住所から選択なら
     elsif params[:order][:select_name] == "1"
-      @receiver = Receiver.find(params[:order][:receiver_id])
-      @order.address = @receiver.address
-      @order.postal_code = @receiver.postal_code
-      @order.name = @receiver.name
+      if params[:order][:receiver_id].blank?
+        @order = Order.new(orders_params)
+        @customer = current_customer
+        render :new
+      else
+        @receiver = Receiver.find(params[:order][:receiver_id])
+        @order.address = @receiver.address
+        @order.postal_code = @receiver.postal_code
+        @order.name = @receiver.name
+      end
       # 新しいお届け先なら
     elsif params[:order][:select_name] == "2"
       if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
