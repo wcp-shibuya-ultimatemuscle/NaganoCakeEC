@@ -11,5 +11,5 @@ ja:
             #  blank: "が入力されていません。"
              # too_long: "は%{count}文字以下に設定して下さい。"
     attributes:
-      product:
+      genre:
         type: "ジャンル名"
