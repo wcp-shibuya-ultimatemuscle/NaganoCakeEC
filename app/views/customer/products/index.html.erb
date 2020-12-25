@@ -1,6 +1,4 @@
-
- <div class="container">
-
+<div class="container">
  <div class="row">
   <div class="border col-md-3 ">
    <!--ジャンル検索の部分テンプレート-->
@@ -15,20 +13,24 @@
     <% end %>
     <div class="item">
      <% @products.each do |product| %>
-     <div>
-      <!--商品画像-->
-      <%= attachment_image_tag product, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg" %><br>
-      <!--商品名-->
-      <label for="inputName">商品名</label><br>
-      <%= link_to product_path(product.id) do %>
-      <%= product.name %>
-      <% end %><br>
-      <!--税抜価格-->
-      <label for="inputTaxoutprice">税抜価格</label><br>
-      <p><%= product.tax_out_price %>円</p><br>
+     <div class="card-deck">
+      <div class="card">
+       <div>
+        <!--商品画像-->
+        <%= attachment_image_tag product, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg", class: "" %><br>
+        <!--商品名-->
+        <label for="inputName">商品名</label><br>
+        <%= link_to product_path(product.id) do %>
+         <%= product.name %>
+         <% end %><br>
+         <!--税抜価格-->
+         <label for="inputTaxoutprice">税抜価格</label><br>
+         <p><%= product.tax_out_price %>円</p><br>
+       </div>
+      </div>
      </div>
-    <% end %>
-   </div>
+     <% end %>
+    </div>
    <%= paginate @products %>
   </div>
 

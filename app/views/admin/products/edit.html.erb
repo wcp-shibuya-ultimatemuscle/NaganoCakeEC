@@ -1,12 +1,5 @@
 <div class="container">
 
- <% if @product.errors.any? %>
-  <%= @product.errors.count %>errors prohibited this obj from being saved:
-  <% @product.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
-
 <h3>商品編集</h3>
 
 <%= form_with model: @product, url: admin_product_path(@product.id), local:true do |f| %>
@@ -14,8 +7,8 @@
   <div class="clo-md-5">
    <!--商品画像-->
    <div>
-    <label for="inputImage">Image</label>
-     <%= attachment_image_tag @product, :image, fallback: "no_image.jpg", id: "img_prev", style: "height: 250px; width:300px;" %><br>
+    <label for="inputImage">商品画像</label><br>
+     <%= attachment_image_tag @product, :image, fallback: "no_image.jpg", id: "img_prev", style: "height: 300px; width:300px;" %><br>
     <%= f.attachment_field :image, placeholder: "商品画像" %>
    </div>
   </div>
