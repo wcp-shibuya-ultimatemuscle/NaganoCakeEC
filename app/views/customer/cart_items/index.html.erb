@@ -1,41 +1,53 @@
-<div class="container">
-
-  <div class="row">
-    <table class="table">
-      <thead>
+<main>
+  <div class="container">
+    <div class="row">
+      <table class = "table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <td align="center"><%= link_to "カートを空きにする", destroy_all_path(id: current_customer.id), method: :delete, class:'btn btn-danger' %></td>
+          </tr>
+        </thead>
+        <tbody>
+        <% @carts.each do |cart| %>
+          <tr>
+            <td align="center"><%= cart.product.name %></td>
+            <td align="center"><%= ((cart.product.tax_out_price).to_i * 1.1).round %>円</td>
+            <td align="center">
+            <%= form_with model: @cart, url: cart_item_path(cart.id), method: :patch, local:true do |f| %>
+              <%= f.number_field :quantity, min: 0, value: cart.quantity %>
+              <%= f.submit "変更" %>
+            <% end %>
+            </td>
+            <td align="center"><%= ((cart.product.tax_out_price).to_i * 1.1 * (cart.quantity).to_i).round %>円</td>
+            <% @subtotal = ((cart.product.tax_out_price).to_i * 1.1 * (cart.quantity).to_i).round %>
+            <% @total = @total + @subtotal %>
+            <td align="center"><%= link_to "削除する", cart_item_path(cart.id), method: :delete, class:'btn btn-danger' %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="row">
+      <table class="table table-borderless text-center">
         <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th><%= link_to "カートを空きにする", destroy_all_path(id: current_customer.id), method: :delete %></th>
+          <td><%= link_to "買い物を続ける", products_path, class:'btn btn-primary' %></td>
+          <td align="right">合計金額</td>
+          <td align="left"><%= @total %>円</td>
         </tr>
-      </thead>
-      <tbody>
-      <% @carts.each do |cart| %>
-        <tr>
-          <td><%= cart.product.name %></td>
-          <td><%= ((cart.product.tax_out_price).to_i * 1.1).round %></td>
-          <td>
-          <%= form_with model: @cart, url: cart_item_path(cart.id), method: :patch, local:true do |f| %>
-            <%= f.number_field :quantity, min: 0, value: cart.quantity %>
-            <%= f.submit "変更" %>
-          <% end %>
-          </td>
-          <td><%= ((cart.product.tax_out_price).to_i * 1.1 * (cart.quantity).to_i).round %></td>
-          <% @subtotal = ((cart.product.tax_out_price).to_i * 1.1 * (cart.quantity).to_i).round %>
-          <% @total = @total + @subtotal %>
-          <td><%= link_to "削除する", cart_item_path(cart.id), method: :delete %></td>
-        </tr>
-      </tbody>
-      <% end %>
+      </table>
+    </div>
+    <table class="table table-borderless text-center">
+      <tr>
+        <td>
+        <% if Cart.find_by(customer_id: current_customer.id) != nil %>
+          <%= link_to "情報入力に進む", new_order_path, class:'btn btn-success' %>
+        <% end %>
+        </td>
+      </tr>
     </table>
   </div>
-  <div class="row">
-    <%= link_to "買い物を続ける", products_path %>
-    <tr><th>合計金額</th><td><%= @total %></td></tr>
-  </div>
-  <div class="row">
-    <%= link_to "情報入力に進む", new_order_path %>
-  </div>
-</div>
+</main>

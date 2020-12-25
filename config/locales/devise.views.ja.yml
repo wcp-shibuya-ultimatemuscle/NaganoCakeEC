@@ -59,7 +59,11 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
     models:
+<<<<<<< HEAD
       customer: "ユーザ"
+=======
+      user: "ユーザ"
+>>>>>>> a2ee325308b5510c66ce9daec29f9409eda9caac
   devise:
     confirmations:
       new:

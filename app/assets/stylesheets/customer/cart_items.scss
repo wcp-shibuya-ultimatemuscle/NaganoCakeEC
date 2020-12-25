@@ -1,3 +1,8 @@
 // Place all the styles related to the customer::cartItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+input[type="number"] {
+        width: 45px;
+        height: 30px;
+    }
