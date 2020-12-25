@@ -68,9 +68,8 @@ class Customer::OrdersController < ApplicationController
       # 新しいお届け先なら
     elsif params[:select_name] == "2"
       if params[:receiver][:postal_code].blank? || params[:receiver][:address].blank? || params[:receiver][:name].blank?
-        @order = Order.new(orders_params)
         @customer = current_customer
-        @receiver = current_customer
+        flash[:error] = "空欄があります"
         render :new
       else
         @receiver = Receiver.new(receiver_params)
