@@ -68,7 +68,6 @@ class Customer::OrdersController < ApplicationController
       # 登録済み住所から選択なら
     elsif params[:order][:select_name] == "1"
       if params[:order][:receiver_id].blank?
-        @order = Order.new(orders_params)
         @customer = current_customer
         render :new
       else
