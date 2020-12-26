@@ -18,7 +18,10 @@
           </tr>
           <tr>
             <td class="bg-light">配送先</td>
-            <td>〒<%= @order.postal_code %> &emsp; <%= @order.address %><%= @order.name %></td>
+            <td>
+              〒<%= @order.postal_code %>  &emsp; <%= @order.address %>
+              <br><%= @order.name %>
+            </td>
           </tr>
           <tr>
             <td class="bg-light">支払方法</td>
