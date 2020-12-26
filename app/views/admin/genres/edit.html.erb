@@ -1,21 +1,12 @@
 <main>
  <div class="container">
-
-  <%# if @genre.errors.any? %>
-   <%#= @genre.errors.count %>
-   <!--errors prohibited this obj from being saved:-->
-   <%# @genre.errors.full_messages.each do |message| %>
-     <%#= message %>
-   <%# end %>
- <%# end %>
-
  <div class="row">
   <div class="col-1"></div>
   <div class="col-3">
     <h3 class="text-center bg-light"><strong>ジャンル編集</strong></h3>
   </div>
  </div>
-
+ <!--ジャンル編集フォーム-->
  <div class="row make">
   <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
    <label for="inputGenre"><strong>ジャンル</strong></label>
@@ -28,6 +19,5 @@
    <%= f.submit '変更を保存する', class: "btn btn-sm btn-info" %>
   <% end %>
  </div>
-
  </div>
 </main>

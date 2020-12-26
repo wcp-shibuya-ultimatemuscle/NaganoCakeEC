@@ -1,22 +1,19 @@
 <main>
  <div class="container">
-
-
-<!--新規登録ボタン(右寄せ)-->
-<div class="float-right">
- <%= link_to new_admin_product_path do %>
- <h2><i class="fas fa-plus-square"></i></h2>
- <% end %>
-</div>
-
-<div class="row">
-   <div class="col-3">
-     <h3 class="text-center bg-light"><strong>商品一覧</strong></h3>
-   </div>
+ <!--新規登録ボタン(右寄せ)-->
+ <div class="float-right">
+  <%= link_to new_admin_product_path do %>
+  <h2><i class="fas fa-plus-square"></i></h2>
+  <% end %>
  </div>
-
-
-<table class="table table-hover">
+ <!--商品一覧-->
+ <div class="row">
+  <div class="col-3">
+   <h3 class="text-center bg-light"><strong>商品一覧</strong></h3>
+  </div>
+ </div>
+ <!--商品一覧テーブル-->
+ <table class="table table-hover">
    <thead class="bg-light">
     <tr>
      <th>商品ID</th>
@@ -29,33 +26,33 @@
    <% @products.each do |product| %>
    <tbody>
     <tr>
-     <!--商品ID-->
      <td>
+      <!--商品ID-->
       <%= product.id %>
      </td>
-     <!--商品名-->
      <td class="line">
+      <!--商品名-->
       <%= link_to admin_product_path(product.id) do %>
        <%= product.name %>
       <% end %>
      </td>
-     <!--税抜価格-->
      <td>
+      <!--税抜価格-->
       <p><%= product.tax_out_price %></p>
      </td>
-     <!--ジャンル-->
      <td>
+      <!--ジャンル-->
       <p><%= product.genre.type %></p>
      </td>
-     <!--ステータス-->
      <td>
+      <!--ステータス-->
       <%= product.status  %>
      </td>
     </tr>
    </tbody>
    <% end %>
   </table>
-
+  <!--ページャ-->
   <div class="row">
     <div class="col-5"></div>
     <div class="col-2 text-center">

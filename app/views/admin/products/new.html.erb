@@ -1,5 +1,5 @@
 <div class="container">
-
+<!--商品登録フォーム-->
 <h3>商品新規登録</h3>
 <%= form_with model: @product, url:'/admin/products', local:true do |f| %>
 <div class="row">
@@ -23,6 +23,7 @@
    </thead>
   </table>
   <div class="actions">
+   <!--登録ボタン-->
    <%= f.submit '新規登録' %>
   </div>
  </div>
