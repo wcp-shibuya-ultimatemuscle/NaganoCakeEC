@@ -20,7 +20,7 @@ class Customer::ReceiversController < ApplicationController
 
   def edit
     @receiver = Receiver.find(params[:id])
-    unless @receiver.customer_id == current_customer.id
+    unless @receiver.customer_id == current_customer.id    #URL直打ち対策、ログインしている会員以外は編集一覧にとばされます
       redirect_to receivers_path
     end
   end
