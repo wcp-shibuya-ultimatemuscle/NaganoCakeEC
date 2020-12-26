@@ -25,7 +25,7 @@
       <div class="card-deck">
         <% @products.each do |product| %>
           <div class="card shadow-lg rounded-circle bg-warning topcardmg", style="width: 18rem;">
-            <%= attachment_image_tag product, :image, size: "120x100", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle bd-placeholder-img bd-placeholder-img-lg card-img" %>
+            <%= link_to attachment_image_tag(product, :image, size: "120x100", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle bd-placeholder-img bd-placeholder-img-lg card-img"), product_path(product.id) %>
             <h5 class="card-title text-center"><%= link_to product.name, product_path(product.id) %></h5>
             <p class="card-text text-center"><%= product.tax_out_price %>円</p>
           </div>
