@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        receiver:
+          attributes:
+            postal_code:
+              blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "はハイフンを着けずに、半角数字7桁で入力して下さい。"
+            address:
+              blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            name:
+              blank: "が入力されていません。"
+    attributes:
+      receiver:
+        postal_code: "郵便番号"
+        address: "住所"
+        name: "宛名"

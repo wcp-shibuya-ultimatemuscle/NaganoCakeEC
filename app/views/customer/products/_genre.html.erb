@@ -1,0 +1,18 @@
+<div>
+ <table class="table text-center">
+  <tr>
+   <th><h4><strong>ジャンル検索</strong></h4></th>
+  </tr>
+  <tr>
+   <td class="text-left text-center">
+    <li class="mb-4"><h5><strong><%=link_to "当店オススメ商品", root_path, class:"text-dark" %></strong></h5></li>
+    <li class="mb-4"><h5><strong><%=link_to "すべての商品", products_path, class:"text-dark" %></strong></h5></li>
+    <% genres.each do |genre| %>
+      <li class="mt-4"><strong><%= link_to genre.type, products_path(id: genre.id), class: "text-dark" %></strong></li>
+    <% end %>
+   </td>
+  </tr>
+ </table>
+</div>
+
+

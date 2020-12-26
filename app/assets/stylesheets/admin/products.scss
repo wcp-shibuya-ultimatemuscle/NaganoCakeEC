@@ -1,0 +1,24 @@
+// Place all the styles related to the admin::products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.line {
+  text-decoration: underline;
+}
+
+input[type="text"] {
+        width: 166.8px;
+        height: 25px;
+    }
+
+#product_genre_id{
+  width: 166.8px;
+}
+
+#product_status{
+  width: 166.8px;
+}
+
+#inputTax_out_price{
+  width: 166.8px;
+}

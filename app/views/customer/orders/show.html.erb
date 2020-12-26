@@ -1,0 +1,90 @@
+<main>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-3">
+        <h3 class="text-center bg-light"><strong>注文履歴詳細</strong></h3>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-7">
+        <strong> &emsp; 注文情報</strong>
+        <!--注文情報のテーブル-->
+        <table class="table table-bordered mt-2">
+          <tr>
+            <td class="bg-light">注文日時</td>
+            <td><%= @order.created_at.to_s(:datetime_jp) %></td>
+          </tr>
+          <tr>
+            <td class="bg-light">配送先</td>
+            <td>
+              〒<%= @order.postal_code %>  &emsp; <%= @order.address %>
+              <br><%= @order.name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-light">支払方法</td>
+            <td><%= @order.payment %></td>
+          </tr>
+          <tr>
+            <td class="bg-light">ステータス</td>
+            <td><%= @order.status %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-3">
+        <strong> &emsp; 請求情報</strong>
+        <!--注文による請求情報のテーブル-->
+        <table class="table table-bordered mt-2">
+          <tr>
+            <td class="bg-light">商品合計</td>
+            <td class="text-right"><%= @order.sum.to_s(:delimited) %> 円</td>
+          </tr>
+          <tr>
+            <td class="bg-light">配送料</td>
+            <td class="text-right"><%= @order.shipping %> 円</td>
+          </tr>
+          <tr>
+            <th class="bg-light">ご請求額</th>
+            <td class="text-right"><%= ((@order.sum).to_i  + (@order.shipping).to_i).to_s(:delimited) %> 円</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div class="row mt-4">
+      <div class="col-8">
+        <strong> &emsp; 注文内容</strong>
+        <!--注文した商品内容のテーブル-->
+        <table class="table table-bordered mt-2">
+          <thead class="bg-light">
+            <tr>
+              <td>商品</td>
+              <td>単価（税込）</td>
+              <td>個数</td>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_products.each do |order_product| %>
+                <tr>
+                  <td><%= order_product.product.name %></td>
+                  <td class="zzz text-right"><%= order_product.tax_in_price.to_s(:delimited) %> 円</td>
+                  <td class="zzz text-right"><%= order_product.quantity %> 個</td>
+                  <td class="zzz text-right"><%= ((order_product.tax_in_price).to_i * (order_product.quantity).to_i).to_s(:delimited)%> 円</td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-2 d-flex align-items-center mt-5">
+        <%= link_to "一覧画面へ戻る", orders_path, class: "btn btn-light" %>
+      </div>
+    </div>
+
+  </div>
+</main>

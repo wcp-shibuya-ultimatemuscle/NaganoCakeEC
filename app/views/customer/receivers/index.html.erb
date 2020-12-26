@@ -1,0 +1,76 @@
+<main>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-5">
+        <h3 class="text-center bg-light"><strong>配送先登録/一覧</strong></h3>
+      </div>
+    </div>
+
+    <div class="row make">
+      <%= form_with model: @receiver, url: receivers_path, local: true do |f| %>
+      <div class="col-12">
+        <table class="table table-borderless">
+          <tr>
+            <th>郵便番号(ハイフンなし)</th>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+
+          <tr>
+            <th>住所</th>
+            <td><%= f.text_field :address %></td>
+          </tr>
+
+          <tr>
+            <th>宛名</th>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= f.submit "登録する", class:"btn btn-success" %></td>
+          </tr>
+        </table>
+      </div>
+      <% end %>
+    </div>
+
+
+    <div class="row make">
+      <div class ="col-10">
+        <table class ="table table-bordered">
+          <thead class="bg-light">
+            <tr>
+              <th class="title">郵便番号</th>
+              <th>住所</th>
+              <th>宛名</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @receivers.each do |receiver| %>
+            <tr>
+              <td><%= receiver.postal_code %></td>
+              <td><%= receiver.address %></td>
+              <td><%= receiver.name %></td>
+              <td class="xxx">
+                <%=link_to "編集する", edit_receiver_path(receiver.id), class:"btn btn-primary btn-sm" %>
+                &ensp;
+                <%=link_to "削除する", receiver_path(receiver.id), method: :delete, class:"btn btn-danger btn-sm" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row make">
+      <div class="col-10 text-center">
+        <%=link_to "マイページに戻る", customer_path(current_customer.id), class:"btn btn-light"%>
+      </div>
+    </div>
+
+  </div>
+</main>
+

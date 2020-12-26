@@ -1,0 +1,13 @@
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h3><span class="bg-secondary text-white">　管理者画面　</span></h3><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto text-center">
+    <h2>本日の注文件数　　　<u><%= link_to @todayorder.count, admin_orders_path(order_type: "today"), class: "text-dark" %></u> 件</h2>
+    </div>
+  </div>
+</div>

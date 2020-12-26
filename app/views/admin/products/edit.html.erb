@@ -1,0 +1,51 @@
+<div class="container">
+
+<h3>商品編集</h3>
+<%= form_with model: @product, url: admin_product_path(@product.id), local:true do |f| %>
+ <div class="row">
+  <div class="clo-md-5">
+   <div>
+    <!--商品画像-->
+    <label for="inputImage">商品画像</label><br>
+     <%= attachment_image_tag @product, :image, fallback: "no_image.jpg", id: "img_prev", style: "height: 300px; width:300px;" %><br>
+    <%= f.attachment_field :image, placeholder: "商品画像" %>
+   </div>
+  </div>
+  <div class="col-md-7">
+   <table>
+   <thead>
+    <!--以下、商品名、商品説明、ジャンル、税抜価格、販売ステータス-->
+    <tr><th><label for="inputName">商品名</label></th><td><%= f.text_field :name, autiofocus: true, id:"inputName", placeholder:"商品名" %></td></tr>
+    <tr><th><label for="inputBody">商品説明</label></th><td><%= f.text_area :body, autiofocus: true, id:"inputBody", placeholder:"商品説明" %></td></tr>
+    <tr><th><label for="inputGenre">ジャンル</label></th><td><%= f.collection_select :genre_id, Genre.all, :id, :type %></td></tr>
+    <tr><th><label for="inputTax_out_price">税抜価格</label></th><td><%= f.number_field :tax_out_price, min: 1, autiofocus: true, id:"inputTax_out_price", placeholder:"税抜価格" %></td></tr>
+    <tr><th><label for="inputStstud">販売ステータス</label></th><td><%= f.select :status, options_for_select(Product.statuses.keys) %></td></tr>
+   </thead>
+  </table>
+   <div class="actions">
+   <%= f.submit '編集する', class: "btn btn-sm btn-info" %>
+   </div>
+  </div>
+ </div>
+ <% end %>
+
+ <!--画像プレビューのためのjs-->
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('#product_image').change(function(){
+    readURL(this);
+  });
+});
+</script>
+
+
+</div>

@@ -1,0 +1,33 @@
+<main>
+  <div class="main2">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-11 text-center">
+        <h4><strong>本当に退会しますか？</strong></h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-11 text-center mt-4">
+        <h5>退会すると、会員登録情報や<br>これまでの購入履歴が閲覧できなくなります。</h5>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-11 text-center mt-4">
+        <h6>退会する場合は、「退会する」をクリックしてください。</h6>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-11 text-center mt-4">
+        <%=link_to "マイページに戻る", customer_path(current_customer.id), class:"btn btn-primary"%>
+        &emsp;
+        <%=link_to "退会する", customers_withdraw_path, class:"btn btn-danger", data:{confirm: " [確認] 退会してもよろしいですか？"},method: :patch %>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</main>

@@ -1,0 +1,36 @@
+<main>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+      <!--注文情報入力フォーム-->
+      <%= form_with model: @order, url: orders_confirm_path, method: :get, local: true do |f| %>
+        <h4>支払方法</h4>
+        <ul>
+          <li><label><%= f.radio_button :payment, "銀行振込", :checked => true %>銀行振込</label></li>
+          <li><label><%= f.radio_button :payment, "クレジットカード" %>クレジットカード</label></li>
+        </ul>
+        <h4>お届け先</h4>
+        <ul>
+          <!--ご自身の住所-->
+          <li><label><%= f.radio_button :select_name, 0, :checked => true %>ご自身の住所</label></li>
+            <%= f.label @customer.address %></br>
+          <!--登録済み住所から選択-->
+          <li><label><%= f.radio_button :select_name, 1 %>登録済み住所から選択</label></li>
+            <%= f.collection_select :receiver_id, current_customer.receivers, :id, :address, include_blank: '選択してください'%>
+          <!--新しいお届け先-->
+          <li><label><%= f.radio_button :select_name, 2 %>新しいお届け先</label></li>
+            <ul>
+              <li><p>郵便番号（ハイフンなし）<%= f.text_field :postal_code %></p></li>
+              <li><p><span class="text_field">住所</span><%= f.text_field :address, style: "width: 400px;" %></p></li>
+              <li><p><span class="text_field">宛名</span><%= f.text_field :name %></p></li>
+            </ul>
+          <%= f.submit "確認画面へ進む", class:'btn btn-primary' %>
+          <% unless flash[:error] == nil %><span class="deviseval alert alert-danger"><%= flash[:error] %></span><% end %>
+        </ul>
+      <% end %>
+      </div>
+    </div>
+
+  </div>
+</main>

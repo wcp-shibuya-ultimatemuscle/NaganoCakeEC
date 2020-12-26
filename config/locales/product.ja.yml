@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        product:
+          #attributes:
+           # name:
+              #blank: "が入力されていません。"
+              #too_long: "は%{count}文字以下に設定して下さい。"
+            #tax_out_price:
+            #  blank: "が入力されていません。"
+             # too_long: "は%{count}文字以下に設定して下さい。"
+    attributes:
+      product:
+        name: "商品名"
+        tax_out_price: "税抜価格"
+        body: "商品説明"
