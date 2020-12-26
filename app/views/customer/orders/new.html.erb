@@ -1,8 +1,9 @@
-<!--注文情報入力フォーム-->
 <main>
   <div class="container">
+
     <div class="row">
       <div class="col-12">
+      <!--注文情報入力フォーム-->
       <%= form_with model: @order, url: orders_confirm_path, method: :get, local: true do |f| %>
         <h4>支払方法</h4>
         <ul>
@@ -10,8 +11,8 @@
           <li><label><%= f.radio_button :payment, "クレジットカード" %>クレジットカード</label></li>
         </ul>
         <h4>お届け先</h4>
-        <!--ご自身の住所-->
         <ul>
+          <!--ご自身の住所-->
           <li><label><%= f.radio_button :select_name, 0, :checked => true %>ご自身の住所</label></li>
             <%= f.label @customer.address %></br>
           <!--登録済み住所から選択-->
@@ -30,5 +31,6 @@
       <% end %>
       </div>
     </div>
+
   </div>
 </main>
