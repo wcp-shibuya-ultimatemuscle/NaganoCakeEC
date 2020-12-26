@@ -1,31 +1,38 @@
 <div class="container">
+ <div class="row make">
+   <div class="col-1"></div>
+   <div class="col-3">
+     <h3 class="text-center bg-light"><strong>商品新規登録</strong></h3>
+   </div>
+ </div>
 <!--商品登録フォーム-->
-<h3>商品新規登録</h3>
+
 <%= form_with model: @product, url:'/admin/products', local:true do |f| %>
 <div class="row">
  <div class="col-md-5">
   <div>
    <!--商品画像-->
-   <label for="inputImage">商品画像</label><br>
+   <label for="inputImage"><strong>商品画像</strong></label><br>
    <%= attachment_image_tag @product, :image, fallback: "no_image.jpg", id: "img_prev", style: "height: 300px; width:300px;" %><br>
    <%= f.attachment_field :image, placeholder: "商品画像" %>
   </div>
  </div>
- <div class="col-md-7">
+ <div class="col-md-4 align-self-center">
   <table>
    <thead>
     <!--以下、商品名、商品説明、ジャンル、税抜価格、販売ステータス-->
     <tr><th><label for="inputName">商品名</label></th><td><%= f.text_field :name, autiofocus: true, id:"inputName", placeholder:"商品名" %></td></tr>
     <tr><th><label for="inputBody">商品説明</label></th><td><%= f.text_area :body, autiofocus: true, id:"inputBody", placeholder:"商品説明" %></td></tr>
     <tr><th><label for="inputGenre">ジャンル</label></th><td><%= f.collection_select :genre_id, Genre.all, :id, :type, {class: 'form-control'} %></td></tr>
-    <tr><th><label for="inputTax_out_price">税抜価格</label></th><td><%= f.text_area :tax_out_price, autiofocus: true, id:"inputTax_out_price", placeholder:"税抜価格" %></td></tr>
+    <tr><th><label for="inputTax_out_price">税抜価格</label></th><td><%= f.number_field :tax_out_price, min: 1, autiofocus: true, id:"inputTax_out_price", placeholder:"税抜価格" %></td></tr>
     <tr><th><label for="inputStstud">販売ステータス</label></th><td><%= f.select :status, options_for_select(Product.statuses.keys) %></td></tr>
+    <tr><th></th><td class="text-right"><%= f.submit '新規登録', class: "btn btn-primary mt-3" %></td></tr>
    </thead>
   </table>
-  <div class="actions">
+
    <!--登録ボタン-->
-   <%= f.submit '新規登録' %>
-  </div>
+   <div class="text-center mt-5"><%#= f.submit '新規登録', class: "btn btn-primary" %></div>
+
  </div>
 </div>
 <% end %>
