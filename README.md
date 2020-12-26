@@ -1,24 +1,26 @@
-# README
+# ながのケーキECサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ケーキ屋の長野ケーキのECサイトになります。閲覧は未登録でもできますが、
+購入は登録が必要です。
 
-Things you may want to cover:
+# 開発環境
+Ruby on Rails ver 5.2.4
+AWS Cloud9
+Git hub
 
-* Ruby version
+## 使用したGem File
 
-* System dependencies
+Devise
+Bootstrap
+JQuery
+kaminari
+rails-i18n
+refile
+font-awesome-sass
 
-* Configuration
+## 作者
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+yusukeishino
+ishige-shogo
+KKe-coder
+zunema
