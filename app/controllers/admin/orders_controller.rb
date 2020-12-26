@@ -13,7 +13,7 @@ class Admin::OrdersController < ApplicationController
       @customer = Customer.find(params[:format])
       @orders = @customer.orders
     else
-      @orders = Order.all.page(params[:page]).per(10).order(id: "DESC")    #注文履歴を降順(新しいものが一番上に)ページャ設定
+      @orders = Order.all  #注文履歴を降順(新しいものが一番上に)ページャ設定
     end
   end
 

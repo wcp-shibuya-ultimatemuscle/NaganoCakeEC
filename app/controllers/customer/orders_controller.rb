@@ -27,14 +27,17 @@ class Customer::OrdersController < ApplicationController
       @order = Order.new(orders_params)
       @order.customer_id = current_customer.id
       if @order.save
-        receiver = Receiver.new(receivers_params)  #新しい配送先を登録
-        receiver.customer_id = current_customer.id
-        receiver.postal_code = @order.postal_code
-        receiver.address = @order.address
-        receiver.name = @order.name
-        receiver.save
+        if params[:order][:select_name] == "2"
+          receiver = Receiver.new(receivers_params)  #新しい配送先を登録
+          receiver.customer_id = current_customer.id
+          receiver.postal_code = @order.postal_code
+          receiver.address = @order.address
+          receiver.name = @order.name
+          receiver.save
+        end
+
         carts = Cart.where(customer_id: current_customer.id)
-        carts.each do |cart|　#注文商品をorder_productモデルへ保存させる繰り返し処理
+        carts.each do |cart|   #注文商品をorder_productモデルへ保存させる繰り返し処理
           order_product = OrderProduct.new(order_product_params)
           order_product.product_id = cart.product_id
           order_product.order_id = @order.id
