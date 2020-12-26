@@ -22,7 +22,7 @@ class Admin::OrdersController < ApplicationController
     order_products = OrderProduct.where(order_id: @order.id)
     @order.status = params[:status]
     @order.update(orders_params)
-     if @order.status == "入金確認"
+     if @order.status == "入金確認" #注文のステータスが「入金確認」になると紐付く注文商品ステータスを「制作待ち」にする
        order_products.each do |order_product|
          order_product.status = "製作待ち"
          order_product.update(order_creates_params)
