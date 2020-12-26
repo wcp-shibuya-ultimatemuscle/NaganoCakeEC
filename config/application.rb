@@ -19,7 +19,13 @@ module Naganocake
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
-    # エラー内容個別表示
+
+    #バリデーションのエラーを各入力欄下に表示する設定
+    #Proc.new do ~ end まででブロック
+    #if エラーが発生していない場合
+    #else 内部変数class_nameにインスタンス～クラスをunderscore処理までで型を返す代入 method_nameに変数
+    #結果としてエラーの数だけ<label>(現在のhtml)</label><br><span>(エラーメッセージ)</span>が返される。
+
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
       if instance.kind_of?(ActionView::Helpers::Tags::Label)
         html_tag.html_safe

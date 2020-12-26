@@ -6,11 +6,12 @@ class Admin::OrderCreatesController < ApplicationController
     @order = Order.find(@order_product.order.id)
     @order_product.status = params[:status]
     @order_product.update(order_creates_params)
-    if @order_product.status == "製作中"
+    if @order_product.status == "製作中" #注文商品のステータスが「製作中」になると紐付く注文のステータスを「製作中」にする
       @order.status = "製作中"
       @order.update(orders_params)
     end
     if OrderProduct.where(order_id: @order_product.order_id).pluck(:status).uniq.join == "製作完了"
+      #同じ注文に基づいた注文商品のステータスを全て呼び出し、配列内で重複した内部要素を1個にまとめ、その結果が「製作完了」と等しければ
       @order.status = "発送準備中"
       @order.update(orders_params)
     end
