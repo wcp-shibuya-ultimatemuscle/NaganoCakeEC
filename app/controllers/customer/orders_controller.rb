@@ -5,7 +5,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.where(customer_id: current_customer.id)
+    @order = Order.where(customer_id: current_customer.id).page(params[:page]).per(5)
   end
 
   def show
