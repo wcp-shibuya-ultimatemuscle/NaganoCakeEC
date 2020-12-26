@@ -14,7 +14,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
-    if Cart.find_by(customer_id: current_customer.id) == nil
+    if Cart.find_by(customer_id: current_customer.id) == nil  #カート内商品が空ならカート画面に遷移
       redirect_to cart_items_path
     end
       @order = Order.new
@@ -23,18 +23,18 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-    if Cart.where(customer_id: current_customer.id).count != 0
+    if Cart.where(customer_id: current_customer.id).count != 0  #カート内に商品があるかチェック、空ならトップページへ
       @order = Order.new(orders_params)
       @order.customer_id = current_customer.id
       if @order.save
-        receiver = Receiver.new(receivers_params)
+        receiver = Receiver.new(receivers_params)  #新しい配送先を登録
         receiver.customer_id = current_customer.id
         receiver.postal_code = @order.postal_code
         receiver.address = @order.address
         receiver.name = @order.name
         receiver.save
         carts = Cart.where(customer_id: current_customer.id)
-        carts.each do |cart|
+        carts.each do |cart|　#注文商品をorder_productモデルへ保存させる繰り返し処理
           order_product = OrderProduct.new(order_product_params)
           order_product.product_id = cart.product_id
           order_product.order_id = @order.id

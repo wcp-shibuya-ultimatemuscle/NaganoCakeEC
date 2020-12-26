@@ -22,6 +22,7 @@
             </tr>
           </thead>
           <tbody>
+          <!--カート内商品の繰り返し処理-->
           <% @carts.each do |cart| %>
             <tr>
               <td align="center"><%= cart.product.name %></td>
